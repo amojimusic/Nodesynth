@@ -1,7 +1,7 @@
 
 NodeSynthWindow {
 
-	var <>window, <>nodeSynthClass, <>slider, <>sliderKnob, <>sliderValue, <>knob, <>numBox;
+	var <>window, <>nodeSynthClass, <>slider, <>sliderKnob, <>sliderValue, <>knob, <>knobValue, <>numBox;
 
 	*new {
 		^super.new;
@@ -281,8 +281,8 @@ NodeSynthOsc {
 				n1.sustainBool = false;
 				n2.sustainBool = false;
 				n3.sustainBool = false;
-				n3.sustainBool = false;
 				n4.sustainBool = false;
+				n5.sustainBool = false;
 				n7.sustainBool = false;
 				n8.sustainBool = false;
 				n6.sustainBool = n6.sustainBool.not;
