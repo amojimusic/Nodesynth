@@ -5,7 +5,7 @@
 
 
 NodeSynth {
-	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider;
+	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider;
 
 	*new {
 		^super.new;
@@ -44,6 +44,16 @@ NodeSynth {
 		n25 = NodeSynthNode.new;
 		n26 = NodeSynthNode.new;
 
+		n27 = NodeSynthNode.new;
+		n28 = NodeSynthNode.new;
+		n29 = NodeSynthNode.new;
+		n30 = NodeSynthNode.new;
+		n31 = NodeSynthNode.new;
+		n32 = NodeSynthNode.new;
+		n33 = NodeSynthNode.new;
+		n34 = NodeSynthNode.new;
+		n35 = NodeSynthNode.new;
+
 		n0.next = n1;
 		n1.next = n2;
 		n2.next = n3;
@@ -70,6 +80,15 @@ NodeSynth {
 		n23.next = n24;
 		n24.next = n25;
 		n25.next = n26;
+
+		n27.next = n28;
+		n28.next = n29;
+		n29.next = n30;
+		n30.next = n31;
+		n31.next = n32;
+		n32.next = n33;
+		n33.next = n34;
+		n34.next = n35;
 
 
 		n0.nodeSynthClass = this;
@@ -102,6 +121,16 @@ NodeSynth {
 		n25.nodeSynthClass = this;
 		n26.nodeSynthClass = this;
 
+		n27.nodeSynthClass = this;
+		n28.nodeSynthClass = this;
+		n29.nodeSynthClass = this;
+		n30.nodeSynthClass = this;
+		n31.nodeSynthClass = this;
+		n32.nodeSynthClass = this;
+		n33.nodeSynthClass = this;
+		n34.nodeSynthClass = this;
+		n35.nodeSynthClass = this;
+
 		n0.x = 0;
 		n1.x = 25;
 		n2.x = 50;
@@ -131,6 +160,16 @@ NodeSynth {
 		n24.x = 150;
 		n25.x = 175;
 		n26.x = 200;
+
+		n27.x = 0;
+		n28.x = 25;
+		n29.x = 50;
+		n30.x = 75;
+		n31.x = 100;
+		n32.x = 125;
+		n33.x = 150;
+		n34.x = 175;
+		n35.x = 200;
 
 		n0.y = 75;
 		n1.y = 75;
@@ -162,6 +201,16 @@ NodeSynth {
 		n25.y = 75;
 		n26.y = 150;
 
+		n27.y = 150;
+		n28.y = 75;
+		n29.y = 75;
+		n30.y = 75;
+		n31.y = 75;
+		n32.y = 75;
+		n33.y = 75;
+		n34.y = 75;
+		n35.y = 150;
+
 		n1.rect = Rect(n1.x - 5, n1.y - 5, 10, 10);
 		n2.rect = Rect(n2.x - 5, n2.y - 5, 10, 10);
 		n3.rect = Rect(n3.x - 5, n3.y - 5, 10, 10);
@@ -178,13 +227,21 @@ NodeSynth {
 		n15.rect = Rect(n6.x - 5, n6.y - 5, 10, 10);
 		n16.rect = Rect(n7.x - 5, n7.y - 5, 10, 10);
 
-		n19.rect = Rect(n1.x - 5, n1.y - 5, 10, 10);
+		n19.rect = Rect(n19.x - 5, n19.y - 5, 10, 10);
 		n20.rect = Rect(n2.x - 5, n2.y - 5, 10, 10);
 		n21.rect = Rect(n3.x - 5, n3.y - 5, 10, 10);
 		n22.rect = Rect(n4.x - 5, n4.y - 5, 10, 10);
 		n23.rect = Rect(n5.x - 5, n5.y - 5, 10, 10);
 		n24.rect = Rect(n6.x - 5, n6.y - 5, 10, 10);
-		n25.rect = Rect(n7.x - 5, n7.y - 5, 10, 10);
+		n25.rect = Rect(n25.x - 5, n25.y - 5, 10, 10);
+
+		n27.rect = Rect(n27.x - 5, n27.y - 5, 10, 10);
+		n28.rect = Rect(n2.x - 5, n2.y - 5, 10, 10);
+		n29.rect = Rect(n3.x - 5, n3.y - 5, 10, 10);
+		n30.rect = Rect(n4.x - 5, n4.y - 5, 10, 10);
+		n31.rect = Rect(n5.x - 5, n5.y - 5, 10, 10);
+		n32.rect = Rect(n6.x - 5, n6.y - 5, 10, 10);
+		n33.rect = Rect(n33.x - 5, n33.y - 5, 10, 10);
 
 		n1.view = View(osc1, n1.rect);
 		n2.view = View(osc1, n2.rect);
@@ -194,21 +251,29 @@ NodeSynth {
 		n6.view = View(osc1, n6.rect);
 		n7.view = View(osc1, n7.rect);
 
-		n10.view = View(osc1, n1.rect);
-		n11.view = View(osc1, n2.rect);
-		n12.view = View(osc1, n3.rect);
-		n13.view = View(osc1, n4.rect);
-		n14.view = View(osc1, n5.rect);
-		n15.view = View(osc1, n6.rect);
-		n16.view = View(osc1, n7.rect);
+		n10.view = View(osc2, n1.rect);
+		n11.view = View(osc2, n2.rect);
+		n12.view = View(osc2, n3.rect);
+		n13.view = View(osc2, n4.rect);
+		n14.view = View(osc2, n5.rect);
+		n15.view = View(osc2, n6.rect);
+		n16.view = View(osc2, n7.rect);
 
-		n19.view = View(osc1, n1.rect);
-		n20.view = View(osc1, n2.rect);
-		n21.view = View(osc1, n3.rect);
-		n22.view = View(osc1, n4.rect);
-		n23.view = View(osc1, n5.rect);
-		n24.view = View(osc1, n6.rect);
-		n25.view = View(osc1, n7.rect);
+		n19.view = View(envOsc1, n1.rect);
+		n20.view = View(envOsc1, n2.rect);
+		n21.view = View(envOsc1, n3.rect);
+		n22.view = View(envOsc1, n4.rect);
+		n23.view = View(envOsc1, n5.rect);
+		n24.view = View(envOsc1, n6.rect);
+		n25.view = View(envOsc1, n7.rect);
+
+		n27.view = View(envOsc2, n1.rect);
+		n28.view = View(envOsc2, n2.rect);
+		n29.view = View(envOsc2, n3.rect);
+		n30.view = View(envOsc2, n4.rect);
+		n31.view = View(envOsc2, n5.rect);
+		n32.view = View(envOsc2, n6.rect);
+		n33.view = View(envOsc2, n7.rect);
 
 
 		window = NodeSynthWindow.new;
@@ -270,6 +335,23 @@ NodeSynth {
 
 		envOsc1LengthSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + 20 + oscWidth, 20, 12, oscHeight);
 
+		envOsc2 = NodeSynthOsc.new;
+		envOsc2.nodeSynthClass = this;
+		envOsc2.n0 = n27;
+		envOsc2.n1 = n28;
+		envOsc2.n2 = n29;
+		envOsc2.n3 = n30;
+		envOsc2.n4 = n31;
+		envOsc2.n5 = n32;
+		envOsc2.n6 = n33;
+		envOsc2.n7 = n34;
+		envOsc2.n8 = n35;
+		envOsc2.makeView(oscWidth + 50 + oscWidth + 50 + 10, 30 + oscHeight, oscWidth, oscHeight);
+
+		envOsc2AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + oscWidth, 30 + oscHeight, 12, oscHeight);
+
+		envOsc2LengthSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + 20 + oscWidth, 30 + oscHeight, 12, oscHeight);
+
 
 		n0.envBool = false;
 		n1.envBool = false;
@@ -300,7 +382,18 @@ NodeSynth {
 		n25.envBool = true;
 		n26.envBool = true;
 
+		n27.envBool = true;
+		n28.envBool = true;
+		n29.envBool = true;
+		n30.envBool = true;
+		n31.envBool = true;
+		n32.envBool = true;
+		n33.envBool = true;
+		n34.envBool = true;
+		n35.envBool = true;
+
 		n19.sustainBool = true;
+		n28.sustainBool = true;
 
 
 		synthName = \nsSynth;
