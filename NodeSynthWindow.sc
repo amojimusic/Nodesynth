@@ -129,8 +129,43 @@ NodeSynthOsc {
 			Pen.addOval(Rect(n6.x - 5, n6.y - 5, 10, 10));
 			Pen.addOval(Rect(n7.x - 5, n7.y - 5, 10, 10));
 
-			Pen.fillColor_(Color.white);
+
 			Pen.stroke;
+
+			if(n1.sustainBool){
+				Pen.addOval(n1.view.bounds);
+				Pen.fillStroke;
+			};
+
+			if(n2.sustainBool){
+				Pen.addOval(n2.view.bounds);
+				Pen.fillStroke;
+			};
+
+			if(n3.sustainBool){
+				Pen.addOval(n3.view.bounds);
+				Pen.fillStroke;
+			};
+
+			if(n4.sustainBool){
+				Pen.addOval(n4.view.bounds);
+				Pen.fillStroke;
+			};
+
+			if(n5.sustainBool){
+				Pen.addOval(n5.view.bounds);
+				Pen.fillStroke;
+			};
+
+			if(n6.sustainBool){
+				Pen.addOval(n6.view.bounds);
+				Pen.fillStroke;
+			};
+
+			if(n7.sustainBool){
+				Pen.addOval(n7.view.bounds);
+				Pen.fillStroke;
+			};
 
 		});
 
@@ -149,6 +184,133 @@ NodeSynthOsc {
 		n5.view = View(view, n5.rect);
 		n6.view = View(view, n6.rect);
 		n7.view = View(view, n7.rect);
+
+		n1.view.mouseUpAction_({
+			if(n1.envBool == true){
+				n0.sustainBool = false;
+				n2.sustainBool = false;
+				n3.sustainBool = false;
+				n4.sustainBool = false;
+				n5.sustainBool = false;
+				n6.sustainBool = false;
+				n7.sustainBool = false;
+				n8.sustainBool = false;
+				n1.sustainBool = n1.sustainBool.not;
+				if(n1.sustainBool != true){
+					n2.sustainBool = true;
+				};
+			};
+			view.refresh;
+		});
+
+		n2.view.mouseUpAction_({
+			if(n2.envBool == true){
+				n0.sustainBool = false;
+				n1.sustainBool = false;
+				n3.sustainBool = false;
+				n4.sustainBool = false;
+				n5.sustainBool = false;
+				n6.sustainBool = false;
+				n7.sustainBool = false;
+				n8.sustainBool = false;
+				n2.sustainBool = n2.sustainBool.not;
+				if(n2.sustainBool != true){
+					n1.sustainBool = true;
+				};
+			};
+			view.refresh;
+		});
+
+		n3.view.mouseUpAction_({
+			if(n3.envBool == true){
+				n0.sustainBool = false;
+				n1.sustainBool = false;
+				n2.sustainBool = false;
+				n4.sustainBool = false;
+				n5.sustainBool = false;
+				n6.sustainBool = false;
+				n7.sustainBool = false;
+				n8.sustainBool = false;
+				n3.sustainBool = n3.sustainBool.not;
+				if(n3.sustainBool != true){
+					n1.sustainBool = true;
+				};
+			};
+			view.refresh;
+		});
+
+		n4.view.mouseUpAction_({
+			if(n4.envBool == true){
+				n0.sustainBool = false;
+				n1.sustainBool = false;
+				n2.sustainBool = false;
+				n3.sustainBool = false;
+				n5.sustainBool = false;
+				n6.sustainBool = false;
+				n7.sustainBool = false;
+				n8.sustainBool = false;
+				n4.sustainBool = n4.sustainBool.not;
+				if(n4.sustainBool != true){
+					n1.sustainBool = true;
+				};
+			};
+			view.refresh;
+		});
+
+		n5.view.mouseUpAction_({
+			if(n5.envBool == true){
+				n0.sustainBool = false;
+				n1.sustainBool = false;
+				n2.sustainBool = false;
+				n3.sustainBool = false;
+				n4.sustainBool = false;
+				n6.sustainBool = false;
+				n7.sustainBool = false;
+				n8.sustainBool = false;
+				n5.sustainBool = n5.sustainBool.not;
+				if(n5.sustainBool != true){
+					n1.sustainBool = true;
+				};
+			};
+			view.refresh;
+		});
+
+		n6.view.mouseUpAction_({
+			if(n6.envBool == true){
+				n0.sustainBool = false;
+				n1.sustainBool = false;
+				n2.sustainBool = false;
+				n3.sustainBool = false;
+				n3.sustainBool = false;
+				n4.sustainBool = false;
+				n7.sustainBool = false;
+				n8.sustainBool = false;
+				n6.sustainBool = n6.sustainBool.not;
+				if(n6.sustainBool != true){
+					n1.sustainBool = true;
+				};
+			};
+			view.refresh;
+		});
+
+		n7.view.mouseUpAction_({
+			if(n7.envBool == true){
+				n0.sustainBool = false;
+				n1.sustainBool = false;
+				n2.sustainBool = false;
+				n3.sustainBool = false;
+				n4.sustainBool = false;
+				n5.sustainBool = false;
+				n6.sustainBool = false;
+				n8.sustainBool = false;
+				n7.sustainBool = n7.sustainBool.not;
+				if(n7.sustainBool != true){
+					n1.sustainBool = true;
+				};
+			};
+			view.refresh;
+		});
+
 
 
 		n1.view.mouseMoveAction_({
@@ -345,7 +507,7 @@ NodeSynthOsc {
 			var num;
 
 			num = sev.y + ((eigh.y - sev.y) *
-					((((i / waveSize) * oscWidth) - sev.x) / (oscWidth - sev.x)));
+				((((i / waveSize) * oscWidth) - sev.x) / (oscWidth - sev.x)));
 
 			if(i <= ((sev.x/oscWidth) * waveSize)){
 				num = six.y + ((sev.y - six.y) *

@@ -184,6 +184,24 @@ NodeSynth {
 		osc2AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 30 + oscWidth + 20, 20, 12, oscHeight);
 
 
+		n0.envBool = false;
+		n1.envBool = false;
+		n2.envBool = false;
+		n3.envBool = false;
+		n4.envBool = false;
+		n5.envBool = false;
+		n6.envBool = false;
+		n7.envBool = false;
+		n8.envBool = false;
+		n9.envBool = false;
+		n10.envBool = false;
+		n11.envBool = false;
+		n12.envBool = false;
+		n13.envBool = false;
+		n14.envBool = false;
+		n15.envBool = false;
+		n16.envBool = false;
+		n17.envBool = false;
 
 
 		synthName = \nsSynth;
