@@ -1,7 +1,7 @@
 
 
 NodeSynthNode {
-	var <>x = 0, <>y = 0, <>next = nil, <>view, <>rect, <>nodeSynthClass, <>envBool = true, <>sustainBool = false;
+	var <>x = 0, <>y = 0, <>next = nil, <>view, <>rect, <>nodeSynthClass, <>envBool = false, <>sustainBool = false;
 
 	*new {
 		^super.new;
