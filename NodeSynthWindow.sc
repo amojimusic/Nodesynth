@@ -11,6 +11,7 @@ NodeSynthWindow {
 		arg x, y, width, height;
 		window = Window("Nodesynth", Rect(x, y, width, height)).background_(Color.black);
 		window.front;
+
 		^window;
 	}
 
@@ -80,7 +81,8 @@ NodeSynthOsc {
 	}
 
 	inst {
-		/*n0 = nodeSynthClass.n0;
+		/*
+		n0 = nodeSynthClass.n0;
 		n1 = nodeSynthClass.n1;
 		n2 = nodeSynthClass.n2;
 		n3 = nodeSynthClass.n3;
@@ -88,9 +90,10 @@ NodeSynthOsc {
 		n5 = nodeSynthClass.n5;
 		n6 = nodeSynthClass.n6;
 		n7 = nodeSynthClass.n7;
-		n8 = nodeSynthClass.n8;*/
+		n8 = nodeSynthClass.n8;
+		*/
 		parent = nodeSynthClass.window.window;
-		this.makeWave;
+		//nodeSynthClass.makeSynth;
 
 
 	}
@@ -200,6 +203,7 @@ NodeSynthOsc {
 					n2.sustainBool = true;
 				};
 			};
+			nodeSynthClass.makeSynth;
 			view.refresh;
 		});
 
@@ -218,6 +222,7 @@ NodeSynthOsc {
 					n1.sustainBool = true;
 				};
 			};
+			nodeSynthClass.makeSynth;
 			view.refresh;
 		});
 
@@ -236,6 +241,7 @@ NodeSynthOsc {
 					n1.sustainBool = true;
 				};
 			};
+			nodeSynthClass.makeSynth;
 			view.refresh;
 		});
 
@@ -254,6 +260,7 @@ NodeSynthOsc {
 					n1.sustainBool = true;
 				};
 			};
+			nodeSynthClass.makeSynth;
 			view.refresh;
 		});
 
@@ -272,6 +279,7 @@ NodeSynthOsc {
 					n1.sustainBool = true;
 				};
 			};
+			nodeSynthClass.makeSynth;
 			view.refresh;
 		});
 
@@ -290,6 +298,7 @@ NodeSynthOsc {
 					n1.sustainBool = true;
 				};
 			};
+			nodeSynthClass.makeSynth;
 			view.refresh;
 		});
 
@@ -308,6 +317,7 @@ NodeSynthOsc {
 					n1.sustainBool = true;
 				};
 			};
+			nodeSynthClass.makeSynth;
 			view.refresh;
 		});
 
@@ -331,9 +341,9 @@ NodeSynthOsc {
 			};
 			n1.rect = Rect(n1.x - 5, n1.y - 5, 10, 10);
 			n1.view.bounds = Rect(n1.x - 5, n1.y - 5, 10, 10);
-			parent.refresh;
-			this.makeWave;
 			nodeSynthClass.makeSynth;
+			parent.refresh;
+
 		});
 
 		n2.view.mouseMoveAction_({
@@ -356,8 +366,7 @@ NodeSynthOsc {
 			n2.rect = Rect(n2.x, n2.y, 10, 10);
 			n2.view.bounds = Rect(n2.x - 5, n2.y - 5, 10, 10);
 			parent.refresh;
-			this.makeWave;
-			nodeSynthClass.makeSynth;
+			//nodeSynthClass.makeSynth;
 		});
 
 		n3.view.mouseMoveAction_({
@@ -379,8 +388,7 @@ NodeSynthOsc {
 			n3.rect = Rect(n3.x, n3.y, 10, 10);
 			n3.view.bounds = Rect(n3.x - 5, n3.y - 5, 10, 10);
 			parent.refresh;
-			this.makeWave;
-			nodeSynthClass.makeSynth;
+			//nodeSynthClass.makeSynth;
 		});
 
 		n4.view.mouseMoveAction_({
@@ -402,8 +410,7 @@ NodeSynthOsc {
 			n4.rect = Rect(n4.x, n4.y, 10, 10);
 			n4.view.bounds = Rect(n4.x - 5, n4.y - 5, 10, 10);
 			parent.refresh;
-			this.makeWave;
-			nodeSynthClass.makeSynth;
+			//nodeSynthClass.makeSynth;
 		});
 
 		n5.view.mouseMoveAction_({
@@ -425,8 +432,7 @@ NodeSynthOsc {
 			n5.rect = Rect(n5.x, n5.y, 10, 10);
 			n5.view.bounds = Rect(n5.x - 5, n5.y - 5, 10, 10);
 			parent.refresh;
-			this.makeWave;
-			nodeSynthClass.makeSynth;
+			//nodeSynthClass.makeSynth;
 		});
 
 		n6.view.mouseMoveAction_({
@@ -448,8 +454,7 @@ NodeSynthOsc {
 			n6.rect = Rect(n6.x, n6.y, 10, 10);
 			n6.view.bounds = Rect(n6.x - 5, n6.y - 5, 10, 10);
 			parent.refresh;
-			this.makeWave;
-			nodeSynthClass.makeSynth;
+			//nodeSynthClass.makeSynth;
 		});
 
 		n7.view.mouseMoveAction_({
@@ -471,8 +476,7 @@ NodeSynthOsc {
 			n7.rect = Rect(n7.x, n7.y, 10, 10);
 			n7.view.bounds = Rect(n7.x - 5, n7.y - 5, 10, 10);
 			parent.refresh;
-			this.makeWave;
-			nodeSynthClass.makeSynth;
+			//nodeSynthClass.makeSynth;
 		});
 
 		^view;
@@ -481,7 +485,7 @@ NodeSynthOsc {
 	makeWave {
 		var zero, first, sec, thir, four, fif, six, sev, eigh, i, waveSize, oscWidth, oscHeight;
 
-		waveSize = 4096 * 4;
+		waveSize =  1024 * 2;
 		oscWidth = nodeSynthClass.oscWidth;
 		oscHeight = nodeSynthClass.oscHeight;
 

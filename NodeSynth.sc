@@ -411,7 +411,7 @@ NodeSynth {
 		^window;
 	}
 
-	makeSynth {
+	/*makeSynth {
 		if(synthName.isNil){
 			synthName = \nsSynth;
 		};
@@ -458,6 +458,25 @@ NodeSynth {
 
 
 
+	}*/
+
+	makeSynth {
+		wave1 = osc1.makeWave;
+		wave2 = osc2.makeWave;
+		Ndef(synthName, {
+			var sig;
+			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1));
+
+			sig = sig ! 2;
+		});
+
+	}
+
+
+	playSynth {
+
+		Ndef(synthName).play;
+		"played".postln;
 	}
 }
 
