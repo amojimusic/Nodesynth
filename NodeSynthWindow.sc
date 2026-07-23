@@ -341,7 +341,7 @@ NodeSynthOsc {
 			};
 			n1.rect = Rect(n1.x - 5, n1.y - 5, 10, 10);
 			n1.view.bounds = Rect(n1.x - 5, n1.y - 5, 10, 10);
-			nodeSynthClass.makeSynth;
+			//nodeSynthClass.makeSynth;
 			parent.refresh;
 
 		});
@@ -573,6 +573,52 @@ NodeSynthOsc {
 
 	}
 
+
+
+}
+
+NodeSynthFilter {
+
+	var <>filter, <>cutoff, <>resonance, <>parent, <>nodeSynthClass, <>node;
+
+	*new {
+		^super.new;
+	}
+
+	makeFilter {
+		arg par, x, y, width, height;
+		parent = par;
+		filter = UserView(par, Rect(x, y, width, height)).background_(Color.white);
+		filter.drawFunc_({
+			Pen.addOval(node.view.bounds);
+			Pen.stroke;
+		});
+
+		node.rect = Rect(node.x - 5, node.y - 5, 10, 10);
+		node.view = View(filter, node.rect);
+
+		node.view.mouseMoveAction_({
+			arg v, x, y;
+			node.x = x + node.x - 5;
+			if(node.x <= 0){
+				node.x = 0.00001;
+			};
+			if(node.x >= 200){
+				node.x = 199.9999;
+			};
+			node.y = y + node.y - 5;
+			if(node.y <= 0){
+				node.y = 0.00001;
+			};
+			if(node.y >= 150){
+				node.y = 149.9999;
+			};
+			node.rect = Rect(node.x, node.y, 10, 10);
+			node.view.bounds = Rect(node.x - 5, node.y - 5, 10, 10);
+			parent.refresh;
+
+		});
+	}
 }
 
 

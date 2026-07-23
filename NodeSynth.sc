@@ -5,7 +5,7 @@
 
 
 NodeSynth {
-	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider;
+	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res;
 
 	*new {
 		^super.new;
@@ -83,6 +83,9 @@ NodeSynth {
 		n60 = NodeSynthNode.new;
 		n61 = NodeSynthNode.new;
 		n62 = NodeSynthNode.new;
+
+		n63 = NodeSynthNode.new;
+		n64 = NodeSynthNode.new;
 
 		n0.next = n1;
 		n1.next = n2;
@@ -218,6 +221,9 @@ NodeSynth {
 		n61.nodeSynthClass = this;
 		n62.nodeSynthClass = this;
 
+		n63.nodeSynthClass = this;
+		n64.nodeSynthClass = this;
+
 		n0.x = 0;
 		n1.x = 25;
 		n2.x = 50;
@@ -287,6 +293,9 @@ NodeSynth {
 		n60.x = 150;
 		n61.x = 175;
 		n62.x = 200;
+
+		n63.x = 100;
+		n64.x = 100;
 
 		n0.y = 75;
 		n1.y = 75;
@@ -358,6 +367,9 @@ NodeSynth {
 		n61.y = 75;
 		n62.y = 75;
 
+		n63.y = 50;
+		n64.y = 50;
+
 		n1.rect = Rect(n1.x - 5, n1.y - 5, 10, 10);
 		n2.rect = Rect(n2.x - 5, n2.y - 5, 10, 10);
 		n3.rect = Rect(n3.x - 5, n3.y - 5, 10, 10);
@@ -414,6 +426,9 @@ NodeSynth {
 		n58.rect = Rect(n6.x - 5, n6.y - 5, 10, 10);
 		n59.rect = Rect(n7.x - 5, n7.y - 5, 10, 10);
 
+		n63.rect = Rect(n6.x - 5, n6.y - 5, 10, 10);
+		n64.rect = Rect(n7.x - 5, n7.y - 5, 10, 10);
+
 		n1.view = View(osc1, n1.rect);
 		n2.view = View(osc1, n2.rect);
 		n3.view = View(osc1, n3.rect);
@@ -469,6 +484,9 @@ NodeSynth {
 		n58.view = View(osc1, n5.rect);
 		n59.view = View(osc1, n6.rect);
 		n60.view = View(osc1, n7.rect);
+
+		n63.view = View(osc1, n6.rect);
+		n64.view = View(osc1, n7.rect);
 
 
 
@@ -602,6 +620,7 @@ NodeSynth {
 
 
 
+
 		n0.envBool = false;
 		n1.envBool = false;
 		n2.envBool = false;
@@ -643,6 +662,18 @@ NodeSynth {
 
 		n19.sustainBool = true;
 		n28.sustainBool = true;
+
+		fil1 = NodeSynthFilter.new;
+		fil1.node = n63;
+		fil1.makeFilter(window.window, 10, oscHeight + 30, oscWidth, oscHeight);
+
+
+
+		fil2 = NodeSynthFilter.new;
+		fil2.node = n64;
+		fil2.makeFilter(window.window, 10 + oscWidth + 50, oscHeight + 30, oscWidth, oscHeight);
+
+
 
 
 		synthName = \nsSynth;
