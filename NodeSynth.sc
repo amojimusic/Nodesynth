@@ -5,7 +5,7 @@
 
 
 NodeSynth {
-	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res;
+	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res, <>env1, <>env2;
 
 	*new {
 		^super.new;
@@ -692,45 +692,45 @@ NodeSynth {
 	}
 
 	/*makeSynth {
-		if(synthName.isNil){
-			synthName = \nsSynth;
-		};
+	if(synthName.isNil){
+	synthName = \nsSynth;
+	};
 
-		wave1 = osc1.makeWave;
-		wave2 = osc2.makeWave;
-		fadeTime = 1;
+	wave1 = osc1.makeWave;
+	wave2 = osc2.makeWave;
+	fadeTime = 1;
 
-		/*synthDefFunc = {
-			arg freq = 440, mul = 0.5, pan = 0, out = 0, w = wave, sel = 0;
-			var buf, sig;
-			buf = Select.kr(sel, [Buffer.alloc(Server.local, wave.size).loadCollection(wave), Buffer.alloc(Server.local, wave.size).loadCollection(wave)]);
-			sig = Osc.ar(buf, freq, 0, mul);
-			sig = Pan2.ar(sig, pan);
-			Out.ar(out, sig);
+	/*synthDefFunc = {
+	arg freq = 440, mul = 0.5, pan = 0, out = 0, w = wave, sel = 0;
+	var buf, sig;
+	buf = Select.kr(sel, [Buffer.alloc(Server.local, wave.size).loadCollection(wave), Buffer.alloc(Server.local, wave.size).loadCollection(wave)]);
+	sig = Osc.ar(buf, freq, 0, mul);
+	sig = Pan2.ar(sig, pan);
+	Out.ar(out, sig);
 
-		};
+	};
 
-		synthDef = SynthDef.new(synthName, {
-			arg freq = 440, mul = 0.5, pan = 0, out = 0, w = wave, sel = 0;
-			var buf, sig;
-			buf = Select.kr(sel, [Buffer.alloc(Server.local, wave.size).loadCollection(wave), Buffer.alloc(Server.local, wave.size).loadCollection(wave)]);
-			sig = Osc.ar(buf, freq, 0, mul);
-			sig = Pan2.ar(sig, pan);
-			Out.ar(out, sig);
+	synthDef = SynthDef.new(synthName, {
+	arg freq = 440, mul = 0.5, pan = 0, out = 0, w = wave, sel = 0;
+	var buf, sig;
+	buf = Select.kr(sel, [Buffer.alloc(Server.local, wave.size).loadCollection(wave), Buffer.alloc(Server.local, wave.size).loadCollection(wave)]);
+	sig = Osc.ar(buf, freq, 0, mul);
+	sig = Pan2.ar(sig, pan);
+	Out.ar(out, sig);
 
-		}).add;*/
+	}).add;*/
 
-		/*nDef = Ndef(synthName, {
-			arg freq = 440, mul = 0.5, pan = 0, out = 0, w = wave, sel = 0;
-			var buf, sig;
-			buf = Select.kr(sel, [Buffer.alloc(Server.local, wave.size).loadCollection(wave), Buffer.alloc(Server.local, wave.size).loadCollection(wave)]);
-			sig = Osc.ar(buf, freq, 0, mul);
-			sig = Pan2.ar(sig, pan);
-			Out.ar(out, sig);
+	/*nDef = Ndef(synthName, {
+	arg freq = 440, mul = 0.5, pan = 0, out = 0, w = wave, sel = 0;
+	var buf, sig;
+	buf = Select.kr(sel, [Buffer.alloc(Server.local, wave.size).loadCollection(wave), Buffer.alloc(Server.local, wave.size).loadCollection(wave)]);
+	sig = Osc.ar(buf, freq, 0, mul);
+	sig = Pan2.ar(sig, pan);
+	Out.ar(out, sig);
 
-		});
+	});
 
-		nDef.fadeTime_(fadeTime);*/
+	nDef.fadeTime_(fadeTime);*/
 
 
 
@@ -749,6 +749,70 @@ NodeSynth {
 
 			sig = sig ! 2;
 		});
+
+	}
+
+	makeEnv {
+		{
+
+			var seg1, seg2, seg3, seg4, seg5, seg6, seg7;
+
+			seg1 = envOsc1.n0.next.x;
+			seg2 = envOsc1.n0.next.next.x - seg1;
+			seg3 = envOsc1.n0.next.next.next.x - (seg1 + seg2);
+			seg4 = envOsc1.n0.next.next.next.next.x - (seg1 + seg2 + seg3);
+			seg5 = envOsc1.n0.next.next.next.next.next.x - (seg1 + seg2 + seg3 + seg4);
+			seg6 = envOsc1.n0.next.next.next.next.next.next.x - (seg1 + seg2 + seg3 + seg4 + seg5);
+			seg7 = envOsc1.n0.next.next.next.next.next.next.next.x - (seg1 + seg2 + seg3 + seg4 + seg5 + seg6);
+
+
+			env1 = Env([envOsc1.n0.y,
+				envOsc1.n0.next.y,
+				envOsc1.n0.next.next.y,
+				envOsc1.n0.next.next.next.y,
+				envOsc1.n0.next.next.next.next.y,
+				envOsc1.n0.next.next.next.next.next.y,
+				envOsc1.n0.next.next.next.next.next.next.y,
+				envOsc1.n0.next.next.next.next.next.next.next.y].neg + (oscHeight) / oscHeight * (envOsc1AmpSlider.sliderValue * 2),
+			[seg1, seg2, seg3, seg4, seg5, seg6, seg7] * 0.02 * (envOsc1LengthSlider.sliderValue * 5),
+			'lin',
+			envOsc1.n0.indexOfSusNode;
+
+			);
+
+		}.();
+
+		{
+
+			var seg1, seg2, seg3, seg4, seg5, seg6, seg7;
+
+			seg1 = envOsc2.n0.next.x;
+			seg2 = envOsc2.n0.next.next.x - seg1;
+			seg3 = envOsc2.n0.next.next.next.x - (seg1 + seg2);
+			seg4 = envOsc2.n0.next.next.next.next.x - (seg1 + seg2 + seg3);
+			seg5 = envOsc2.n0.next.next.next.next.next.x - (seg1 + seg2 + seg3 + seg4);
+			seg6 = envOsc2.n0.next.next.next.next.next.next.x - (seg1 + seg2 + seg3 + seg4 + seg5);
+			seg7 = envOsc2.n0.next.next.next.next.next.next.next.x - (seg1 + seg2 + seg3 + seg4 + seg5 + seg6);
+
+
+			env2 = Env([envOsc2.n0.y,
+				envOsc2.n0.next.y,
+				envOsc2.n0.next.next.y,
+				envOsc2.n0.next.next.next.y,
+				envOsc2.n0.next.next.next.next.y,
+				envOsc2.n0.next.next.next.next.next.y,
+				envOsc2.n0.next.next.next.next.next.next.y,
+				envOsc2.n0.next.next.next.next.next.next.next.y].neg + (oscHeight) / oscHeight * (envOsc2AmpSlider.sliderValue),
+			[seg1, seg2, seg3, seg4, seg5, seg6, seg7] * 0.02 * (envOsc2LengthSlider.sliderValue * 5),
+			'lin',
+			envOsc2.n0.indexOfSusNode;
+
+			);
+
+		}.();
+
+
+
 
 	}
 

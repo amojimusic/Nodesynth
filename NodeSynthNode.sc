@@ -126,4 +126,21 @@ NodeSynthNode {
 
 
 	}
+
+	indexOfSusNode {
+		var index = 0, node = this;
+		while{node.isNil.not}{
+		if(node.sustainBool == true){
+			^index;
+		};
+		index = index + 1;
+		node = node.next;
+		};
+
+
+		^-1;
+
+	}
+
+
 }
