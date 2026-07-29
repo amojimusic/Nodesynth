@@ -142,5 +142,20 @@ NodeSynthNode {
 
 	}
 
+	search {
+		arg xSearch;
+		var node = this;
+		while{node != nil}{
+			if(node != nil){
+			if(node.x == xSearch){
+				^node;
+			};
+			node = node.next;
+			};
+		};
+
+		^nil;
+	}
+
 
 }
