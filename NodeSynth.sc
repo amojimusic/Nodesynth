@@ -693,6 +693,7 @@ NodeSynth {
 		voice8Name = \v8;
 
 		MIDIIn.connectAll;
+
 		this.makeSynth;
 
 		voice1Node = NodeSynthNode.new;
@@ -713,6 +714,15 @@ NodeSynth {
 		voice6Node.next = voice7Node;
 		voice7Node.next = voice8Node;
 
+		voice1Node.x = 0;
+		voice2Node.x = 0;
+		voice3Node.x = 0;
+		voice4Node.x = 0;
+		voice5Node.x = 0;
+		voice6Node.x = 0;
+		voice7Node.x = 0;
+		voice8Node.x = 0;
+
 
 
 
@@ -721,164 +731,271 @@ NodeSynth {
 		MIDIdef.noteOn(midiDefName, {
 			arg val, num, chan, src;
 			var node;
+			if(midiDownNum >= 8){
+				midiDownNum = 0;
+			};
 			midiDownNum = midiDownNum + 1;
-			node = voice1Node.atIndex(midiDownNum);
+
+
+			node = voice1Node.atIndex(midiDownNum - 1);
+
+
+
+
 
 			if(node != nil){
-			node.x = num.midicps;
-			node.y = midiDownNum;
+
+
+				node.x = num;
+				node.y = midiDownNum;
 
 
 
-			if(midiDownNum == 1){
-
-				voice1 = Ndef(voice1Name);
-				voice1.set(\done, 0);
-				voice1.play;
-				voice1.set(\freq, node.x);
-				voice1.set(\gate, 1);
 
 
+
+
+				if(midiDownNum == 1){
+
+					if(voice1Node.x != 0){
+						voice1.free;
+					};
+					voice1 = Ndef(voice1Name);
+					voice1.play;
+					voice1.set(\done, 0);
+					voice1.set(\freq, num.midicps);
+					voice1.set(\gate, 1);
+
+
+				};
+
+				if(midiDownNum == 2){
+
+					if(voice2Node.x != 0){
+						voice2.free;
+					};
+					voice2 = Ndef(voice2Name);
+					voice2.play;
+					voice2.set(\done, 0);
+
+					voice2.set(\freq, num.midicps);
+					voice2.set(\gate, 1);
+
+
+				};
+
+				if(midiDownNum == 3){
+
+					if(voice3Node.x != 0){
+						voice3.free;
+					};
+					voice3 = Ndef(voice3Name);
+					voice3.play;
+					voice3.set(\done, 0);
+
+					voice3.set(\freq, num.midicps);
+					voice3.set(\gate, 1);
+
+
+				};
+
+				if(midiDownNum == 4){
+
+					if(voice4Node.x != 0){
+						voice4.free;
+					};
+					voice4 = Ndef(voice4Name);
+					voice4.play;
+					voice4.set(\done, 0);
+
+					voice4.set(\freq, num.midicps);
+					voice4.set(\gate, 1);
+
+
+				};
+
+				if(midiDownNum == 5){
+
+					if(voice5Node.x != 0){
+						voice5.free;
+					};
+					voice5 = Ndef(voice5Name);
+					voice5.play;
+					voice5.set(\done, 0);
+
+					voice5.set(\freq, num.midicps);
+					voice5.set(\gate, 1);
+
+
+				};
+
+				if(midiDownNum == 6){
+
+					if(voice6Node.x != 0){
+						voice6.free;
+					};
+					voice6 = Ndef(voice6Name);
+					voice6.play;
+					voice6.set(\done, 0);
+
+					voice6.set(\freq, num.midicps);
+					voice6.set(\gate, 1);
+
+
+				};
+
+				if(midiDownNum == 7){
+
+					if(voice7Node.x != 0){
+						voice7.free;
+					};
+					voice7 = Ndef(voice7Name);
+					voice7.play;
+					voice7.set(\done, 0);
+
+					voice7.set(\freq, num.midicps);
+					voice7.set(\gate, 1);
+
+
+				};
+
+				if(midiDownNum == 8){
+
+					if(voice8Node.x != 0){
+						voice8.free;
+					};
+					voice8 = Ndef(voice8Name);
+					voice8.play;
+					voice8.set(\done, 0);
+
+					voice8.set(\freq, num.midicps);
+					voice8.set(\gate, 1);
+
+
+				};
 			};
 
-			if(midiDownNum == 2){
-
-				voice2 = Ndef(voice2Name);
-				voice2.set(\done, 0);
-				voice2.play;
-				voice2.set(\freq, node.x);
-				voice2.set(\gate, 1);
 
 
-			};
-
-			if(midiDownNum == 3){
-
-				voice3 = Ndef(voice3Name);
-				voice3.set(\done, 0);
-				voice3.play;
-				voice3.set(\freq, node.x);
-				voice3.set(\gate, 1);
-
-
-			};
-
-			if(midiDownNum == 4){
-
-				voice4 = Ndef(voice4Name);
-				voice4.set(\done, 0);
-				voice4.play;
-				voice4.set(\freq, node.x);
-				voice4.set(\gate, 1);
-
-
-			};
-
-			if(midiDownNum == 5){
-
-				voice5 = Ndef(voice5Name);
-				voice5.set(\done, 0);
-				voice5.play;
-				voice5.set(\freq, node.x);
-				voice5.set(\gate, 1);
-
-
-			};
-
-			if(midiDownNum == 6){
-
-				voice6 = Ndef(voice6Name);
-				voice6.set(\done, 0);
-				voice6.play;
-				voice6.set(\freq, node.x);
-				voice6.set(\gate, 1);
-
-
-			};
-
-			if(midiDownNum == 7){
-
-				voice7 = Ndef(voice7Name);
-				voice7.set(\done, 0);
-				voice7.play;
-				voice7.set(\freq, node.x);
-				voice7.set(\gate, 1);
-
-
-			};
-
-			if(midiDownNum == 8){
-
-				voice8 = Ndef(voice8Name);
-				voice8.set(\done, 0);
-				voice8.play;
-				voice8.set(\freq, node.x);
-				voice8.set(\gate, 1);
-
-
-			};
-			};
-
-
-
-		});
+		}).permanent = true;
 
 		midiDefName = \nsMIDIOff;
 
 
 		MIDIdef.noteOff(midiDefName, {
 			arg val, num, chan, src;
-			var node;
-			node = voice1Node.search(num.midicps);
-			if(node != nil){
+			var node, index;
+			index = 7;
 
-			if(node.y == 1){
-				voice1.set(\gate, 0);
+			while{index >= 0}{
+				node = voice1Node.atIndex(index);
+				if(node != nil){
+					node = node.search(num);
+				};
+				if(node == nil){
+					node = voice1Node.search(num);
+				};
 
+
+
+				if(node != nil){
+
+					if(node.atIndex(index) == 0){
+						voice1.set(\gate, 0);
+					};
+
+					if(node.atIndex(index) == 1){
+						voice2.set(\gate, 0);
+					};
+
+					if(node.atIndex(index) == 2){
+						voice3.set(\gate, 0);
+					};
+
+					if(node.atIndex(index) == 3){
+						voice4.set(\gate, 0);
+					};
+
+					if(node.atIndex(index) == 4){
+						voice5.set(\gate, 0);
+					};
+
+					if(node.atIndex(index) == 5){
+						voice6.set(\gate, 0);
+					};
+
+					if(node.atIndex(index) == 6){
+						voice7.set(\gate, 0);
+					};
+
+					if(node.atIndex(index) == 7){
+						voice8.set(\gate, 0);
+					};
+
+
+					if(node.y == 1){
+						voice1.set(\gate, 0);
+
+
+					};
+
+					if(node.y == 2){
+						voice2.set(\gate, 0);
+
+
+					};
+
+					if(node.y == 3){
+						voice3.set(\gate, 0);
+
+
+					};
+
+					if(node.y == 4){
+						voice4.set(\gate, 0);
+
+
+					};
+
+					if(node.y == 5){
+						voice5.set(\gate, 0);
+
+
+					};
+
+					if(node.y == 6){
+						voice6.set(\gate, 0);
+
+
+					};
+
+					if(node.y == 7){
+						voice7.set(\gate, 0);
+
+
+					};
+
+					if(node.y == 8){
+						voice8.set(\gate, 0);
+
+
+					};
+
+
+
+
+				};
+
+				index = index - 1;
 			};
 
-			if(node.y == 2){
-				voice2.set(\gate, 0);
-
-			};
-
-			if(node.y == 3){
-				voice3.set(\gate, 0);
-
-			};
-
-			if(node.y == 4){
-				voice4.set(\gate, 0);
-
-			};
-
-			if(node.y == 5){
-				voice5.set(\gate, 0);
-
-			};
-
-			if(node.y == 6){
-				voice6.set(\gate, 0);
-
-			};
-
-			if(node.y == 7){
-				voice7.set(\gate, 0);
-
-			};
-
-			if(node.y == 8){
-				voice8.set(\gate, 0);
-
-			};
-
-			};
-
-			midiDownNum = midiDownNum - 1;
 
 
 
-		});
+
+
+
+		}).permanent = true;
 
 
 		^this;
@@ -949,7 +1066,9 @@ NodeSynth {
 		Ndef(voice1Name, {
 			arg freq = 440, gate = 0, done = 2;
 			var sig, env;
-			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq);
+			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
+			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
+
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
 
@@ -959,7 +1078,9 @@ NodeSynth {
 		Ndef(voice2Name, {
 			arg freq = 440, gate = 0, done = 2;
 			var sig, env;
-			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq);
+			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
+			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
+
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
 
@@ -969,7 +1090,9 @@ NodeSynth {
 		Ndef(voice3Name, {
 			arg freq = 440, gate = 0, done = 2;
 			var sig, env;
-			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq);
+			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
+			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
+
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
 
@@ -979,7 +1102,9 @@ NodeSynth {
 		Ndef(voice4Name, {
 			arg freq = 440, gate = 0, done = 2;
 			var sig, env;
-			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq);
+			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
+			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
+
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
 
@@ -989,7 +1114,9 @@ NodeSynth {
 		Ndef(voice5Name, {
 			arg freq = 440, gate = 0, done = 2;
 			var sig, env;
-			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq);
+			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
+			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
+
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
 
@@ -999,7 +1126,9 @@ NodeSynth {
 		Ndef(voice6Name, {
 			arg freq = 440, gate = 0, done = 2;
 			var sig, env;
-			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq);
+			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
+			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
+
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
 
@@ -1009,7 +1138,9 @@ NodeSynth {
 		Ndef(voice7Name, {
 			arg freq = 440, gate = 0, done = 2;
 			var sig, env;
-			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq);
+			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
+			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
+
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
 
@@ -1019,7 +1150,9 @@ NodeSynth {
 		Ndef(voice8Name, {
 			arg freq = 440, gate = 0, done = 2;
 			var sig, env;
-			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq);
+			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
+			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
+
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
 
@@ -1091,9 +1224,6 @@ NodeSynth {
 		}.();
 
 
-		envOsc1.n0.indexOfSusNode.postln;
-		envOsc1AmpSlider.sliderValue.postln;
-		envOsc1LengthSlider.sliderValue.postln;
 
 
 	}
