@@ -583,7 +583,7 @@ NodeSynthOsc {
 
 NodeSynthFilter {
 
-	var <>filter, <>cutoff, <>resonance, <>parent, <>nodeSynthClass, <>node;
+	var <>filter, <>cutoff, <>resonance, <>parent, <>nodeSynthClass, <>node, <>filterType = 0;
 
 	*new {
 		^super.new;
@@ -596,6 +596,44 @@ NodeSynthFilter {
 		filter.drawFunc_({
 			Pen.addOval(node.view.bounds);
 			Pen.stroke;
+
+			if(filterType == 0){
+				Pen.moveTo(0@50);
+				Pen.lineTo((node.x - 25)@50);
+				Pen.lineTo(node.x@node.y);
+				Pen.lineTo((node.x + 50)@height);
+			};
+			if(filterType == 1){
+				Pen.moveTo((node.x - 50)@height);
+
+				Pen.lineTo(node.x@node.y);
+				Pen.lineTo((node.x + 25)@50);
+				Pen.lineTo(width@50);
+			};
+			if(filterType == 2){
+				Pen.moveTo((node.x - 50)@height);
+
+				Pen.lineTo((node.x - 10)@50);
+
+				Pen.lineTo(node.x@node.y);
+				Pen.lineTo((node.x + 10)@50);
+				Pen.lineTo((node.x + 50)@height);
+			};
+			if(filterType < 0){
+				Pen.moveTo(0@50);
+				Pen.lineTo((node.x - 25)@50);
+				Pen.lineTo(node.x@node.y);
+				Pen.lineTo((node.x + 50)@height);
+			};
+			if(filterType > 2){
+				Pen.moveTo(0@50);
+				Pen.lineTo((node.x - 25)@50);
+				Pen.lineTo(node.x@node.y);
+				Pen.lineTo((node.x + 50)@height);
+			};
+
+			Pen.stroke;
+
 		});
 
 		node.rect = Rect(node.x - 5, node.y - 5, 10, 10);
@@ -614,13 +652,17 @@ NodeSynthFilter {
 			if(node.y <= 0){
 				node.y = 0.00001;
 			};
-			if(node.y >= 150){
-				node.y = 149.9999;
+			if(node.y >= 50.0){
+				node.y = 50.0;
 			};
 			node.rect = Rect(node.x, node.y, 10, 10);
 			node.view.bounds = Rect(node.x - 5, node.y - 5, 10, 10);
 			parent.refresh;
 
+		});
+
+		node.view.mouseUpAction_({
+			nodeSynthClass.makeSynth;
 		});
 	}
 }
