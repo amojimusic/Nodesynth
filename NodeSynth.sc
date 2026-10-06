@@ -1075,7 +1075,9 @@ NodeSynth {
 
 	makeSynth {
 
+		var spec;
 		this.makeEnvs;
+		spec = ControlSpec(20, 21000, 'exponential');
 		wave1 = osc1.makeWave;
 		wave2 = osc2.makeWave;
 		osc1AmpSlider.sliderValue = osc1AmpSlider.sliderValue * 0.99 + 0.01;
@@ -1091,8 +1093,8 @@ NodeSynth {
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
-			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
-			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
+			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
+			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
@@ -1105,8 +1107,8 @@ NodeSynth {
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
-			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
-			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
+			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
+			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
@@ -1119,8 +1121,8 @@ NodeSynth {
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
-			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
-			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
+			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
+			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
@@ -1133,9 +1135,8 @@ NodeSynth {
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
-			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
-			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
-
+			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
+			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
 
@@ -1147,8 +1148,8 @@ NodeSynth {
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
-			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
-			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
+			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
+			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
 
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
@@ -1162,8 +1163,8 @@ NodeSynth {
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
-			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
-			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
+			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
+			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
@@ -1176,8 +1177,8 @@ NodeSynth {
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
-			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
-			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
+			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
+			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
@@ -1190,8 +1191,8 @@ NodeSynth {
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
-			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil1.node.x * 10, 20, 20000), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
-			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, Clip.ar(fil2.node.x * 10, 20, 20000), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
+			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
+			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
