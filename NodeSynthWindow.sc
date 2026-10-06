@@ -1,7 +1,7 @@
 
 NodeSynthWindow {
 
-	var <>window, <>nodeSynthClass, <>slider, <>sliderKnob, <>sliderValue, <>knob, <>knobValue, <>numBox;
+	var <>window, <>nodeSynthClass, <>slider, <>sliderKnob, <>sliderValue, <>knob, <>knobValue, <>numBox, <>modBool;
 
 	*new {
 		^super.new;
@@ -62,6 +62,10 @@ NodeSynthWindow {
 			sliderValue = (yVal/height).neg + 1.0;
 			parent.refresh;
 
+		});
+
+		slider.mouseUpAction_({
+			nodeSynthClass.makeSynth;
 		});
 
 

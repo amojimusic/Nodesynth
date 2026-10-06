@@ -512,8 +512,10 @@ NodeSynth {
 		wave1 = osc1.makeWave;
 
 		osc1AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 20, 20, 12, oscHeight);
+		osc1AmpSlider.nodeSynthClass = this;
 
 		osc1FreqSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 40, 20, 12, oscHeight);
+		osc1FreqSlider.nodeSynthClass = this;
 
 
 		osc2 = NodeSynthOsc.new;
@@ -531,8 +533,10 @@ NodeSynth {
 		wave2 = osc2.makeWave;
 
 		osc2AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 20, 20, 12, oscHeight);
+		osc2AmpSlider.nodeSynthClass = this;
 
 		osc2FreqSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 70 + oscWidth + 20, 20, 12, oscHeight);
+		osc2FreqSlider.nodeSynthClass = this;
 
 
 		envOsc1 = NodeSynthOsc.new;
@@ -549,8 +553,10 @@ NodeSynth {
 		envOsc1.makeView(oscWidth + 50 + oscWidth + 50 + 10, 20, oscWidth, oscHeight);
 
 		envOsc1AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + oscWidth, 20, 12, oscHeight);
+		envOsc1AmpSlider.nodeSynthClass = this;
 
 		envOsc1LengthSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + 20 + oscWidth, 20, 12, oscHeight);
+		envOsc1LengthSlider.nodeSynthClass = this;
 
 		envOsc2 = NodeSynthOsc.new;
 		envOsc2.nodeSynthClass = this;
@@ -566,8 +572,11 @@ NodeSynth {
 		envOsc2.makeView(oscWidth + 50 + oscWidth + 50 + 10, 30 + oscHeight, oscWidth, oscHeight);
 
 		envOsc2AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + oscWidth, 30 + oscHeight, 12, oscHeight);
+		envOsc2AmpSlider.nodeSynthClass = this;
 
 		envOsc2LengthSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + 20 + oscWidth, 30 + oscHeight, 12, oscHeight);
+		envOsc2LengthSlider.nodeSynthClass = this;
+
 
 		lfo1 = NodeSynthOsc.new;
 		lfo1.nodeSynthClass = this;
@@ -755,6 +764,7 @@ NodeSynth {
 
 
 
+
 				if(midiDownNum == 1){
 
 					if(voice1Node.x != 0){
@@ -895,6 +905,8 @@ NodeSynth {
 				if(node == nil){
 					node = voice1Node.search(num);
 				};
+
+
 
 
 
@@ -1060,9 +1072,18 @@ NodeSynth {
 	}*/
 
 	makeSynth {
+
 		this.makeEnvs;
 		wave1 = osc1.makeWave;
 		wave2 = osc2.makeWave;
+		osc1AmpSlider.sliderValue = osc1AmpSlider.sliderValue * 0.99 + 0.01;
+		osc2AmpSlider.sliderValue = osc2AmpSlider.sliderValue * 0.99 + 0.01;
+		osc1FreqSlider.sliderValue = osc1FreqSlider.sliderValue * 0.99 + 0.01;
+		osc2FreqSlider.sliderValue = osc2FreqSlider.sliderValue * 0.99 + 0.01;
+		envOsc1AmpSlider.sliderValue = envOsc1AmpSlider.sliderValue * 0.99 + 0.01;
+		envOsc2AmpSlider.sliderValue = envOsc2AmpSlider.sliderValue * 0.99 + 0.01;
+		envOsc1LengthSlider.sliderValue = envOsc1LengthSlider.sliderValue * 0.99 + 0.01;
+		envOsc2LengthSlider.sliderValue = envOsc2LengthSlider.sliderValue * 0.99 + 0.01;
 		Ndef(voice1Name, {
 			arg freq = 440, gate = 0, done = 2;
 			var sig, env;
@@ -1116,6 +1137,7 @@ NodeSynth {
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
+
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
