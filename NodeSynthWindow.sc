@@ -1,7 +1,7 @@
 
 NodeSynthWindow {
 
-	var <>window, <>nodeSynthClass, <>slider, <>sliderKnob, <>sliderValue, <>knob, <>knobValue, <>numBox, <>modBool;
+	var <>window, <>nodeSynthClass, <>slider, <>sliderKnob, <>sliderValue, <>knob, <>knobValue, <>numBox, <>modBool, <>knobColor;
 
 	*new {
 		^super.new;
@@ -25,11 +25,14 @@ NodeSynthWindow {
 		slider = UserView.new(parent, Rect(x, y, width, height)).background_(Color.white);
 		sliderKnob = Rect(0, (height * (sliderValue)).neg + height - (width/2), width, width);
 
+		if(knobColor.isNil){
+			knobColor = Color.black;
+		};
 
 		slider.drawFunc_({
 			Pen.addRect(Rect(x, y, width, height));
 			Pen.addOval(sliderKnob);
-			Pen.strokeColor_(Color.black);
+			Pen.strokeColor_(knobColor);
 			Pen.stroke;
 
 		});
@@ -583,7 +586,7 @@ NodeSynthOsc {
 
 NodeSynthFilter {
 
-	var <>filter, <>cutoff, <>resonance, <>parent, <>nodeSynthClass, <>node, <>filterType = 0;
+	var <>filter, <>cutoff, <>resonance, <>parent, <>nodeSynthClass, <>node, <>filterType = 0, <>nodeColor;
 
 	*new {
 		^super.new;
@@ -595,9 +598,11 @@ NodeSynthFilter {
 		filter = UserView(par, Rect(x, y, width, height)).background_(Color.white);
 		filter.drawFunc_({
 			Pen.addOval(node.view.bounds);
+			Pen.strokeColor = nodeColor;
 			Pen.stroke;
 
 			if(filterType == 0){
+				Pen.strokeColor = Color.black;
 				Pen.moveTo(0@50);
 				Pen.lineTo((node.x - 25)@50);
 				Pen.lineTo(node.x@node.y);

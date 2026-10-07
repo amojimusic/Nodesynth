@@ -6,7 +6,7 @@
 
 
 NodeSynth {
-	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>voice1Env, <>voice2Env, <>voice3Env, <>voice4Env, <>voice5Env, <>voice6Env, <>voice7Env, <>voice8Env, <>voice1Node, <>voice2Node, <>voice3Node, <>voice4Node, <>voice5Node, <>voice6Node, <>voice7Node, <>voice8Node, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res, <>env1, <>env2, <>midiDefName, <>voice1Name, <>voice2Name, <>voice3Name, <>voice4Name, <>voice5Name, <>voice6Name, midiDownNum = 0, <>voice7Name, <>voice8Name;
+	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>voice1Env, <>voice2Env, <>voice3Env, <>voice4Env, <>voice5Env, <>voice6Env, <>voice7Env, <>voice8Env, <>voice1Node, <>voice2Node, <>voice3Node, <>voice4Node, <>voice5Node, <>voice6Node, <>voice7Node, <>voice8Node, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res, <>env1, <>env2, <>midiDefName, <>voice1Name, <>voice2Name, <>voice3Name, <>voice4Name, <>voice5Name, <>voice6Name, midiDownNum = 0, <>voice7Name, <>voice8Name, <>mod = false;
 
 	*new {
 		^super.new;
@@ -739,6 +739,8 @@ NodeSynth {
 
 
 
+
+
 		MIDIdef.noteOn(midiDefName, {
 			arg val, num, chan, src;
 			var node;
@@ -776,6 +778,7 @@ NodeSynth {
 					voice1.play;
 					voice1.set(\done, 0);
 					voice1.set(\freq, num.midicps);
+					voice1.set(\mul, 1.0);
 					voice1.set(\gate, 1);
 
 
@@ -791,6 +794,7 @@ NodeSynth {
 					voice2.set(\done, 0);
 
 					voice2.set(\freq, num.midicps);
+					voice2.set(\mul, 1.0);
 					voice2.set(\gate, 1);
 
 
@@ -806,6 +810,7 @@ NodeSynth {
 					voice3.set(\done, 0);
 
 					voice3.set(\freq, num.midicps);
+					voice3.set(\mul, 1.0);
 					voice3.set(\gate, 1);
 
 
@@ -821,6 +826,7 @@ NodeSynth {
 					voice4.set(\done, 0);
 
 					voice4.set(\freq, num.midicps);
+					voice4.set(\mul, 1.0);
 					voice4.set(\gate, 1);
 
 
@@ -836,6 +842,7 @@ NodeSynth {
 					voice5.set(\done, 0);
 
 					voice5.set(\freq, num.midicps);
+					voice5.set(\mul, 1.0);
 					voice5.set(\gate, 1);
 
 
@@ -851,6 +858,7 @@ NodeSynth {
 					voice6.set(\done, 0);
 
 					voice6.set(\freq, num.midicps);
+					voice6.set(\mul, 1.0);
 					voice6.set(\gate, 1);
 
 
@@ -866,6 +874,7 @@ NodeSynth {
 					voice7.set(\done, 0);
 
 					voice7.set(\freq, num.midicps);
+					voice7.set(\mul, 1.0);
 					voice7.set(\gate, 1);
 
 
@@ -881,6 +890,7 @@ NodeSynth {
 					voice8.set(\done, 0);
 
 					voice8.set(\freq, num.midicps);
+					voice8.set(\mul, 1.0);
 					voice8.set(\gate, 1);
 
 
@@ -1024,6 +1034,11 @@ NodeSynth {
 		^window;
 	}
 
+	modulate {
+		if(mod == true){
+		};
+	}
+
 	/*makeSynth {
 	if(synthName.isNil){
 	synthName = \nsSynth;
@@ -1089,7 +1104,7 @@ NodeSynth {
 		envOsc1LengthSlider.sliderValue = envOsc1LengthSlider.sliderValue * 0.99 + 0.01;
 		envOsc2LengthSlider.sliderValue = envOsc2LengthSlider.sliderValue * 0.99 + 0.01;
 		Ndef(voice1Name, {
-			arg freq = 440, gate = 0, done = 2;
+			arg freq = 440, mul = 0.0, gate = 1, done = 2;
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
@@ -1098,12 +1113,13 @@ NodeSynth {
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
+			sig = sig * mul;
 
 			sig = sig ! 2;
 		});
 
 		Ndef(voice2Name, {
-			arg freq = 440, gate = 0, done = 2;
+			arg freq = 440, mul = 0.0, gate = 1, done = 2;
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
@@ -1112,12 +1128,13 @@ NodeSynth {
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
+			sig = sig * mul;
 
 			sig = sig ! 2;
 		});
 
 		Ndef(voice3Name, {
-			arg freq = 440, gate = 0, done = 2;
+			arg freq = 440, mul = 0.0, gate = 1, done = 2;
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
@@ -1126,40 +1143,43 @@ NodeSynth {
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
+			sig = sig * mul;
 
 			sig = sig ! 2;
 		});
 
 		Ndef(voice4Name, {
-			arg freq = 440, gate = 0, done = 2;
+			arg freq = 440, mul = 0.0, gate = 1, done = 2;
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
 			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
 			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
+
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
+			sig = sig * mul;
 
 			sig = sig ! 2;
 		});
 
 		Ndef(voice5Name, {
-			arg freq = 440, gate = 0, done = 2;
+			arg freq = 440, mul = 0.0, gate = 1, done = 2;
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
 			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
 			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
 
-
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
+			sig = sig * mul;
 
 			sig = sig ! 2;
 		});
 
 		Ndef(voice6Name, {
-			arg freq = 440, gate = 0, done = 2;
+			arg freq = 440, mul = 0.0, gate = 1, done = 2;
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
@@ -1168,12 +1188,13 @@ NodeSynth {
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
+			sig = sig * mul;
 
 			sig = sig ! 2;
 		});
 
 		Ndef(voice7Name, {
-			arg freq = 440, gate = 0, done = 2;
+			arg freq = 440, mul = 0.0, gate = 1, done = 2;
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
@@ -1182,12 +1203,13 @@ NodeSynth {
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
+			sig = sig * mul;
 
 			sig = sig ! 2;
 		});
 
 		Ndef(voice8Name, {
-			arg freq = 440, gate = 0, done = 2;
+			arg freq = 440, mul = 0.0, gate = 1, done = 2;
 			var sig, env;
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
@@ -1196,6 +1218,7 @@ NodeSynth {
 
 			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = sig * env;
+			sig = sig * mul;
 
 			sig = sig ! 2;
 		});
@@ -1275,6 +1298,52 @@ NodeSynth {
 		Ndef(voice1Name).play;
 
 		"played".postln;
+	}
+
+	modMode {
+		var col;
+		col = Color(0.05, 0.55, 0.95);
+		if(mod == true){
+			osc1AmpSlider.knobColor = col;
+			osc2AmpSlider.knobColor = col;
+			osc1FreqSlider.knobColor = col;
+			osc2FreqSlider.knobColor = col;
+			envOsc1AmpSlider.knobColor = col;
+			envOsc2AmpSlider.knobColor = col;
+			envOsc1LengthSlider.knobColor = col;
+			envOsc2LengthSlider.knobColor = col;
+			lfo1AmpSlider.knobColor = col;
+			lfo2AmpSlider.knobColor = col;
+			lfo3AmpSlider.knobColor = col;
+			lfo1FreqSlider.knobColor = col;
+			lfo2FreqSlider.knobColor = col;
+			lfo3FreqSlider.knobColor = col;
+			fil1.nodeColor = col;
+			fil2.nodeColor = col;
+			mod = false;
+		}{
+			col = Color.black;
+			osc1AmpSlider.knobColor = col;
+			osc2AmpSlider.knobColor = col;
+			osc1FreqSlider.knobColor = col;
+			osc2FreqSlider.knobColor = col;
+			envOsc1AmpSlider.knobColor = col;
+			envOsc2AmpSlider.knobColor = col;
+			envOsc1LengthSlider.knobColor = col;
+			envOsc2LengthSlider.knobColor = col;
+			lfo1AmpSlider.knobColor = col;
+			lfo2AmpSlider.knobColor = col;
+			lfo3AmpSlider.knobColor = col;
+			lfo1FreqSlider.knobColor = col;
+			lfo2FreqSlider.knobColor = col;
+			lfo3FreqSlider.knobColor = col;
+			fil1.nodeColor = col;
+			fil2.nodeColor = col;
+
+
+		};
+
+		window.window.refresh;
 	}
 }
 
