@@ -600,9 +600,10 @@ NodeSynthFilter {
 			Pen.addOval(node.view.bounds);
 			Pen.strokeColor = nodeColor;
 			Pen.stroke;
+			Pen.strokeColor = Color.black;
 
 			if(filterType == 0){
-				Pen.strokeColor = Color.black;
+
 				Pen.moveTo(0@50);
 				Pen.lineTo((node.x - 25)@50);
 				Pen.lineTo(node.x@node.y);

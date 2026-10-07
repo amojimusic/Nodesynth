@@ -6,7 +6,7 @@
 
 
 NodeSynth {
-	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>voice1Env, <>voice2Env, <>voice3Env, <>voice4Env, <>voice5Env, <>voice6Env, <>voice7Env, <>voice8Env, <>voice1Node, <>voice2Node, <>voice3Node, <>voice4Node, <>voice5Node, <>voice6Node, <>voice7Node, <>voice8Node, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res, <>env1, <>env2, <>midiDefName, <>voice1Name, <>voice2Name, <>voice3Name, <>voice4Name, <>voice5Name, <>voice6Name, midiDownNum = 0, <>voice7Name, <>voice8Name, <>mod = false, <>loButton, <>hiButton, <>bandButton, <>loButton2, <>hiButton2, <>bandButton2;
+	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>voice1Env, <>voice2Env, <>voice3Env, <>voice4Env, <>voice5Env, <>voice6Env, <>voice7Env, <>voice8Env, <>voice1Node, <>voice2Node, <>voice3Node, <>voice4Node, <>voice5Node, <>voice6Node, <>voice7Node, <>voice8Node, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res, <>env1, <>env2, <>midiDefName, <>voice1Name, <>voice2Name, <>voice3Name, <>voice4Name, <>voice5Name, <>voice6Name, midiDownNum = 0, <>voice7Name, <>voice8Name, <>mod = false, <>loButton, <>hiButton, <>bandButton, <>loButton2, <>hiButton2, <>bandButton2, <>lfo1Button, <>lfo2Button, <>lfo3Button;
 
 	*new {
 		^super.new;
@@ -629,6 +629,54 @@ NodeSynth {
 
 		lfo3FreqSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 70 + oscWidth + 20 + oscWidth + 50, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
 
+		lfo1Button = UserView(window.window, Rect(10, oscHeight + 30 + oscHeight + oscHeight + 15, 20, 20));
+		lfo1Button.background_(Color.white);
+		lfo1Button.mouseDownAction_({
+			if(mod == false){
+				lfo1Button.background_(Color(0.05, 0.55, 0.95));
+				lfo2Button.background_(Color.white);
+				lfo3Button.background_(Color.white);
+				mod = true;
+			}{
+				lfo2Button.background_(Color.white);
+				mod = false;
+			};
+			this.modMode;
+		});
+
+		lfo2Button = UserView(window.window, Rect(10 + 50 + oscWidth, oscHeight + 30 + oscHeight + oscHeight + 15, 20, 20));
+		lfo2Button.background_(Color.white);
+		lfo2Button.mouseDownAction_({
+			if(mod == false){
+				lfo2Button.background_(Color(0.05, 0.55, 0.95));
+				lfo3Button.background_(Color.white);
+				lfo1Button.background_(Color.white);
+				mod = true;
+			}{
+				lfo2Button.background_(Color.white);
+				mod = false;
+			};
+			this.modMode;
+		});
+
+		lfo3Button = UserView(window.window, Rect(10 + 50 + oscWidth + oscWidth + 50, oscHeight + 30 + oscHeight + oscHeight + 15, 20, 20));
+		lfo3Button.background_(Color.white);
+		lfo3Button.mouseDownAction_({
+			if(mod == false){
+				lfo3Button.background_(Color(0.05, 0.55, 0.95));
+				lfo2Button.background_(Color.white);
+				lfo1Button.background_(Color.white);
+				mod = true;
+			}{
+				lfo3Button.background_(Color.white);
+				mod = false;
+			};
+			this.modMode;
+		});
+
+		lfo1.nodeSynthClass = this;
+		lfo2.nodeSynthClass = this;
+		lfo3.nodeSynthClass = this;
 
 
 
@@ -763,6 +811,7 @@ NodeSynth {
 			window.window.refresh;
 			this.makeSynth;
 		});
+
 
 
 
@@ -1397,7 +1446,6 @@ NodeSynth {
 			lfo3FreqSlider.knobColor = col;
 			fil1.nodeColor = col;
 			fil2.nodeColor = col;
-			mod = false;
 		}{
 			col = Color.black;
 			osc1AmpSlider.knobColor = col;
