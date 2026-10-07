@@ -6,7 +6,7 @@
 
 
 NodeSynth {
-	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>voice1Env, <>voice2Env, <>voice3Env, <>voice4Env, <>voice5Env, <>voice6Env, <>voice7Env, <>voice8Env, <>voice1Node, <>voice2Node, <>voice3Node, <>voice4Node, <>voice5Node, <>voice6Node, <>voice7Node, <>voice8Node, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res, <>env1, <>env2, <>midiDefName, <>voice1Name, <>voice2Name, <>voice3Name, <>voice4Name, <>voice5Name, <>voice6Name, midiDownNum = 0, <>voice7Name, <>voice8Name, <>mod = false;
+	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>voice1Env, <>voice2Env, <>voice3Env, <>voice4Env, <>voice5Env, <>voice6Env, <>voice7Env, <>voice8Env, <>voice1Node, <>voice2Node, <>voice3Node, <>voice4Node, <>voice5Node, <>voice6Node, <>voice7Node, <>voice8Node, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res, <>env1, <>env2, <>midiDefName, <>voice1Name, <>voice2Name, <>voice3Name, <>voice4Name, <>voice5Name, <>voice6Name, midiDownNum = 0, <>voice7Name, <>voice8Name, <>mod = false, <>loButton, <>hiButton, <>bandButton, <>loButton2, <>hiButton2, <>bandButton2;
 
 	*new {
 		^super.new;
@@ -296,8 +296,8 @@ NodeSynth {
 		n61.x = 175;
 		n62.x = 200;
 
-		n63.x = 100;
-		n64.x = 100;
+		n63.x = 5;
+		n64.x = 5;
 
 		n0.y = 75;
 		n1.y = 75;
@@ -686,6 +686,83 @@ NodeSynth {
 		fil2.node = n64;
 		fil2.makeFilter(window.window, 10 + oscWidth + 50, oscHeight + 30, oscWidth + 20, oscHeight);
 
+
+
+		loButton = UserView(window.window, Rect(oscWidth + 35, oscHeight + 30, 20, 20));
+		loButton.background_(Color.white);
+
+		hiButton = UserView(window.window, Rect(oscWidth + 35, oscHeight + 30 + (oscHeight * 0.5) - 10, 20, 20));
+		hiButton.background_(Color.white);
+
+		bandButton = UserView(window.window, Rect(oscWidth + 35, oscHeight + 30 + oscHeight - 20, 20, 20));
+		bandButton.background_(Color.white);
+
+		loButton2 = UserView(window.window, Rect(oscWidth + 35 + 50 + oscWidth, oscHeight + 30, 20, 20));
+		loButton2.background_(Color.white);
+
+		hiButton2 = UserView(window.window, Rect(oscWidth + 35 + 50 + oscWidth, oscHeight + 30 + (oscHeight * 0.5) - 10, 20, 20));
+		hiButton2.background_(Color.white);
+
+		bandButton2 = UserView(window.window, Rect(oscWidth + 35 + 50 + oscWidth, oscHeight + 30 + oscHeight - 20, 20, 20));
+		bandButton2.background_(Color.white);
+
+		loButton.mouseDownAction_({
+			loButton.background_(Color.gray);
+			hiButton.background_(Color.white);
+			bandButton.background_(Color.white);
+			fil1.filterType_(0);
+			window.window.refresh;
+			this.makeSynth;
+		});
+
+		hiButton.mouseDownAction_({
+			hiButton.background_(Color.gray);
+			loButton.background_(Color.white);
+			bandButton.background_(Color.white);
+			fil1.filterType_(1);
+			window.window.refresh;
+			this.makeSynth;
+		});
+		hiButton.background_(Color.gray);
+		fil1.filterType_(1);
+
+		bandButton.mouseDownAction_({
+			bandButton.background_(Color.gray);
+			hiButton.background_(Color.white);
+			loButton.background_(Color.white);
+			fil1.filterType_(2);
+			window.window.refresh;
+			this.makeSynth;
+		});
+
+		loButton2.mouseDownAction_({
+			loButton2.background_(Color.gray);
+			hiButton2.background_(Color.white);
+			bandButton2.background_(Color.white);
+			fil2.filterType_(0);
+			window.window.refresh;
+			this.makeSynth;
+		});
+
+		hiButton2.mouseDownAction_({
+			hiButton2.background_(Color.gray);
+			loButton2.background_(Color.white);
+			bandButton2.background_(Color.white);
+			fil2.filterType_(1);
+			window.window.refresh;
+			this.makeSynth;
+		});
+		hiButton2.background_(Color.gray);
+		fil2.filterType_(1);
+
+		bandButton2.mouseDownAction_({
+			bandButton2.background_(Color.gray);
+			hiButton2.background_(Color.white);
+			loButton2.background_(Color.white);
+			fil2.filterType_(2);
+			window.window.refresh;
+			this.makeSynth;
+		});
 
 
 
