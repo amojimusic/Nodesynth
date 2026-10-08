@@ -1,7 +1,7 @@
 
 NodeSynthWindow {
 
-	var <>window, <>nodeSynthClass, <>slider, <>sliderKnob, <>sliderValue, <>knob, <>knobValue, <>numBox, <>modBool, <>knobColor, <>sliderModValue, <>sliderX, <>sliderY, <>sliderWidth, <>sliderHeight, <>modKnobColor, <>modPosKnob, <>modNegKnob;
+	var <>window, <>nodeSynthClass, <>slider, <>sliderKnob, <>sliderValue, <>knob, <>knobValue, <>numBox, <>modBool, <>knobColor, <>sliderModValue, <>sliderX, <>sliderY, <>sliderWidth, <>sliderHeight, <>modKnobColor, <>modPosKnob, <>modNegKnob, <>l1Value = 0.0, <>l2Value = 0.0, <>l3Value = 0.0, <>e2Value = 0.0;
 
 	*new {
 		^super.new;
@@ -114,6 +114,19 @@ NodeSynthWindow {
 				};
 
 
+				if(modulator == 0){
+					l1Value = (yVal/height) - (sliderValue.neg + 1.0);
+				};
+				if(modulator == 1){
+					l2Value = (yVal/height) - (sliderValue.neg + 1.0);
+				};
+				if(modulator == 2){
+					l3Value = (yVal/height) - (sliderValue.neg + 1.0);
+				};
+				if(modulator == 3){
+					e2Value = (yVal/height) - (sliderValue.neg + 1.0);
+				};
+
 
 
 				modPosKnob = Rect(0, yVal - (width / 2), width, width);
@@ -143,6 +156,18 @@ NodeSynthWindow {
 					yVal = 0;
 				};
 
+				if(modulator == 0){
+					l1Value = (yVal/height) - (sliderValue.neg + 1.0);
+				};
+				if(modulator == 1){
+					l2Value = (yVal/height) - (sliderValue.neg + 1.0);
+				};
+				if(modulator == 2){
+					l3Value = (yVal/height) - (sliderValue.neg + 1.0);
+				};
+				if(modulator == 3){
+					e2Value = (yVal/height) - (sliderValue.neg + 1.0);
+				};
 				modPosKnob = Rect(0, yVal - (width / 2), width, width);
 				modNegKnob = Rect(0, (sliderValue.neg + 1.0 * height) - (yVal - (sliderValue.neg + 1.0 * height)) - (width/2), width, width);
 
