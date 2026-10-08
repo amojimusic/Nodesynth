@@ -1202,10 +1202,6 @@ NodeSynth {
 		^window;
 	}
 
-	modulate {
-		if(mod == true){
-		};
-	}
 
 	/*makeSynth {
 	if(synthName.isNil){
@@ -1269,14 +1265,6 @@ NodeSynth {
 		lfo1Wave = lfo1.makeWave;
 		lfo2Wave = lfo2.makeWave;
 		lfo3Wave = lfo3.makeWave;
-		osc1AmpSlider.sliderValue = osc1AmpSlider.sliderValue * 0.99 + 0.01;
-		osc2AmpSlider.sliderValue = osc2AmpSlider.sliderValue * 0.99 + 0.01;
-		osc1FreqSlider.sliderValue = osc1FreqSlider.sliderValue * 0.99 + 0.01;
-		osc2FreqSlider.sliderValue = osc2FreqSlider.sliderValue * 0.99 + 0.01;
-		envOsc1AmpSlider.sliderValue = envOsc1AmpSlider.sliderValue * 0.99 + 0.01;
-		envOsc2AmpSlider.sliderValue = envOsc2AmpSlider.sliderValue * 0.99 + 0.01;
-		envOsc1LengthSlider.sliderValue = envOsc1LengthSlider.sliderValue * 0.99 + 0.01;
-		envOsc2LengthSlider.sliderValue = envOsc2LengthSlider.sliderValue * 0.99 + 0.01;
 		Ndef(voice1Name, {
 			arg freq = 440, mul = 0.0, gate = 1, done = 2;
 			var sig, env;
