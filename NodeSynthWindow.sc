@@ -1,7 +1,7 @@
 
 NodeSynthWindow {
 
-	var <>window, <>nodeSynthClass, <>slider, <>sliderKnob, <>sliderValue, <>knob, <>knobValue, <>numBox, <>modBool, <>knobColor;
+	var <>window, <>nodeSynthClass, <>slider, <>sliderKnob, <>sliderValue, <>knob, <>knobValue, <>numBox, <>modBool, <>knobColor, <>sliderModValue, <>sliderX, <>sliderY, <>sliderWidth, <>sliderHeight, <>modKnobColor, <>modPosKnob, <>modNegKnob;
 
 	*new {
 		^super.new;
@@ -17,6 +17,10 @@ NodeSynthWindow {
 
 	createSlider {
 		arg parent, x, y, width, height;
+		sliderX = x;
+		sliderY = y;
+		sliderWidth = width;
+		sliderHeight = height;
 
 		if(sliderValue.isNil){
 			sliderValue = 0.5;
@@ -25,12 +29,13 @@ NodeSynthWindow {
 		slider = UserView.new(parent, Rect(x, y, width, height)).background_(Color.white);
 		sliderKnob = Rect(0, (height * (sliderValue)).neg + height - (width/2), width, width);
 
+
 		if(knobColor.isNil){
 			knobColor = Color.black;
 		};
 
 		slider.drawFunc_({
-			Pen.addRect(Rect(x, y, width, height));
+			Pen.addRect(Rect(sliderValue.neg + 1.0 * height, y, width, height));
 			Pen.addOval(sliderKnob);
 			Pen.strokeColor_(knobColor);
 			Pen.stroke;
@@ -39,42 +44,139 @@ NodeSynthWindow {
 
 
 
-		slider.mouseMoveAction_({
-			arg v, xVal, yVal;
-			if(yVal >= height){
-				yVal = height;
-			};
-			if(yVal <= 0){
-				yVal = 0;
-			};
-			sliderKnob = (Rect(0, yVal - (width / 2), width, width));
-			sliderValue = (yVal/height).neg + 1.0;
-			parent.refresh;
 
-		});
+			slider.mouseMoveAction_({
+				arg v, xVal, yVal;
+				if(yVal >= height){
+					yVal = height;
+				};
+				if(yVal <= 0){
+					yVal = 0;
+				};
+				sliderKnob = (Rect(0, yVal - (width / 2), width, width));
+				sliderValue = (yVal/height).neg + 1.0;
+				parent.refresh;
 
-		slider.mouseDownAction_({
-			arg v, xVal, yVal;
-			if(yVal >= height){
-				yVal = height;
-			};
-			if(yVal <= 0){
-				yVal = 0;
-			};
-			sliderKnob = (Rect(0, yVal - (width / 2), width, width));
-			sliderValue = (yVal/height).neg + 1.0;
-			parent.refresh;
+			});
 
-		});
+			slider.mouseDownAction_({
+				arg v, xVal, yVal;
+				if(yVal >= height){
+					yVal = height;
+				};
+				if(yVal <= 0){
+					yVal = 0;
+				};
+				sliderKnob = (Rect(0, yVal - (width / 2), width, width));
+				sliderValue = (yVal/height).neg + 1.0;
+				parent.refresh;
 
-		slider.mouseUpAction_({
-			nodeSynthClass.makeSynth;
-		});
+			});
 
-
-
+			slider.mouseUpAction_({
+				nodeSynthClass.makeSynth;
+			});
 
 
+
+
+
+
+	}
+
+	modMode {
+		arg modulator;
+		var width, height, x, y;
+		width = sliderWidth;
+		height = sliderHeight;
+		x = sliderX;
+		y = sliderY;
+		modKnobColor = Color.white;
+		if(nodeSynthClass.mod == false){
+			slider.mouseMoveAction_({
+				arg v, xVal, yVal;
+				if(yVal >= height){
+					yVal = height;
+				};
+				if(yVal <= 0){
+					yVal = 0;
+				};
+				sliderKnob = (Rect(0, yVal - (width / 2), width, width));
+				sliderValue = (yVal/height).neg + 1.0;
+				nodeSynthClass.window.window.refresh;
+
+			});
+
+			slider.mouseDownAction_({
+				arg v, xVal, yVal;
+				if(yVal >= height){
+					yVal = height;
+				};
+				if(yVal <= 0){
+					yVal = 0;
+				};
+				sliderKnob = (Rect(0, yVal - (width / 2), width, width));
+				sliderValue = (yVal/height).neg + 1.0;
+				nodeSynthClass.window.window.refresh;
+
+			});
+
+			slider.mouseUpAction_({
+				nodeSynthClass.makeSynth;
+			});
+
+
+		}{
+			modKnobColor = Color(0.9, 0.8, 0.02);
+			slider.mouseMoveAction_({
+				arg v, xVal, yVal;
+				if(yVal >= height){
+					yVal = height;
+				};
+				if(yVal <= 0){
+					yVal = 0;
+				};
+				modPosKnob  = Rect(0, yVal - (width / 2), width, width);
+				modNegKnob = Rect(0,  (sliderValue.neg + 1.0 * height) + ((yVal - (sliderValue.neg + 1.0 * height)).neg - (width / 2)), width, width);
+				slider.drawFunc_({
+					Pen.strokeColor = modKnobColor;
+					Pen.fillColor = modKnobColor;
+					Pen.addOval(modPosKnob);
+					Pen.addOval(modNegKnob);
+					Pen.fillStroke;
+					Pen.strokeColor = knobColor;
+					Pen.addOval(sliderKnob);
+					Pen.stroke;
+
+				});
+				nodeSynthClass.window.window.refresh;
+			});
+
+			slider.mouseDownAction_({
+				arg v, xVal, yVal;
+				if(yVal >= height){
+					yVal = height;
+				};
+				if(yVal <= 0){
+					yVal = 0;
+				};
+				modPosKnob  = Rect(0, yVal - (width / 2), width, width);
+				modNegKnob = Rect(0, (sliderValue.neg + 1.0 * height) + ((yVal - (sliderValue.neg + 1.0 * height)).neg - (width / 2)), width, width);
+				slider.drawFunc_({
+					Pen.strokeColor = modKnobColor;
+					Pen.fillColor = modKnobColor;
+					Pen.addOval(modPosKnob);
+					Pen.addOval(modNegKnob);
+					Pen.fillStroke;
+					Pen.strokeColor = knobColor;
+					Pen.addOval(sliderKnob);
+					Pen.stroke;
+
+				});
+				nodeSynthClass.window.window.refresh;
+			});
+
+		};
 
 	}
 

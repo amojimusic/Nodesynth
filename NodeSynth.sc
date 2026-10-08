@@ -6,7 +6,7 @@
 
 
 NodeSynth {
-	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>voice1Env, <>voice2Env, <>voice3Env, <>voice4Env, <>voice5Env, <>voice6Env, <>voice7Env, <>voice8Env, <>voice1Node, <>voice2Node, <>voice3Node, <>voice4Node, <>voice5Node, <>voice6Node, <>voice7Node, <>voice8Node, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res, <>env1, <>env2, <>midiDefName, <>voice1Name, <>voice2Name, <>voice3Name, <>voice4Name, <>voice5Name, <>voice6Name, midiDownNum = 0, <>voice7Name, <>voice8Name, <>mod = false, <>loButton, <>hiButton, <>bandButton, <>loButton2, <>hiButton2, <>bandButton2, <>lfo1Button, <>lfo2Button, <>lfo3Button;
+	var <>window, <>osc1, <>osc2, <>oscWidth = 200, <>oscHeight = 150, <>windowWidth = 850, <>windowHeight = 600, windowX = 250, windowY = 100, <>n0, <>n1, <>n2, <>n3, <>n4, <>n5, <>n6, <>n7, <>n8, <>n9, <>n10, <>n11, <>n12, <>n13, <>n14, <>n15, <>n16, <>n17, <>n18, <>n19, <>n20, <>n21, <>n22, <>n23, <>n24, <>n25, <>n26, <>n27, <>n28, <>n29, <>n30, <>n31, <>n32, <>n33, <>n34, <>n35, <>n36, <>n37, <>n38, <>n39, <>n40, <>n41, <>n42, <>n43, <>n44, <>n45, <>n46, <>n47, <>n48, <>n49, <>n50, <>n51, <>n52, <>n53, <>n54, <>n55, <>n56, <>n57, <>n58, <>n59, <>n60, <>n61, <>n62, <>n63, <>n64, <>n65, <>wave1, <>wave2, <>voice1, <>voice2, <>voice3, <>voice4, <>voice5, <>voice6, <>voice7, <>voice8, <>voice1Env, <>voice2Env, <>voice3Env, <>voice4Env, <>voice5Env, <>voice6Env, <>voice7Env, <>voice8Env, <>voice1Node, <>voice2Node, <>voice3Node, <>voice4Node, <>voice5Node, <>voice6Node, <>voice7Node, <>voice8Node, <>synthDef, <>synth, <>synthName, <>synthDefFunc, <>nDef, <>fadeTime, <>osc1AmpSlider, <>osc2AmpSlider, <>osc1FreqSlider, <>osc2FreqSlider, <>envOsc1, <>envOsc2, <>envOsc1AmpSlider, <>envOsc1LengthSlider, <>envOsc2AmpSlider, <>envOsc2LengthSlider, <>lfo1, <>lfo2, <>lfo3, <>lfo1AmpSlider, <>lfo1FreqSlider, <>lfo2AmpSlider, <>lfo2FreqSlider, <>lfo3AmpSlider, <>lfo3FreqSlider, <>fil1, <>fil2, <>fil1Cut, <>fil2Cut, <>fil1Res, <>fil2Res, <>env1, <>env2, <>midiDefName, <>voice1Name, <>voice2Name, <>voice3Name, <>voice4Name, <>voice5Name, <>voice6Name, midiDownNum = 0, <>voice7Name, <>voice8Name, <>mod = false, <>loButton, <>hiButton, <>bandButton, <>loButton2, <>hiButton2, <>bandButton2, <>lfo1Button, <>lfo2Button, <>lfo3Button, <>envOsc2Button, <>lfo1Wave, <>lfo2Wave, <>lfo3Wave, <>bI = 0;
 
 	*new {
 		^super.new;
@@ -511,10 +511,10 @@ NodeSynth {
 		osc1.makeView(10, 20, oscWidth, oscHeight);
 		wave1 = osc1.makeWave;
 
-		osc1AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 20, 20, 12, oscHeight);
+		osc1AmpSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 20, 20, 12, oscHeight);
 		osc1AmpSlider.nodeSynthClass = this;
 
-		osc1FreqSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 40, 20, 12, oscHeight);
+		osc1FreqSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 40, 20, 12, oscHeight);
 		osc1FreqSlider.nodeSynthClass = this;
 
 
@@ -532,10 +532,10 @@ NodeSynth {
 		osc2.makeView(oscWidth + 50 + 10, 20, oscWidth, oscHeight);
 		wave2 = osc2.makeWave;
 
-		osc2AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 20, 20, 12, oscHeight);
+		osc2AmpSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 50 + oscWidth + 20, 20, 12, oscHeight);
 		osc2AmpSlider.nodeSynthClass = this;
 
-		osc2FreqSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 70 + oscWidth + 20, 20, 12, oscHeight);
+		osc2FreqSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 70 + oscWidth + 20, 20, 12, oscHeight);
 		osc2FreqSlider.nodeSynthClass = this;
 
 
@@ -552,10 +552,10 @@ NodeSynth {
 		envOsc1.n8 = n26;
 		envOsc1.makeView(oscWidth + 50 + oscWidth + 50 + 10, 20, oscWidth, oscHeight);
 
-		envOsc1AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + oscWidth, 20, 12, oscHeight);
+		envOsc1AmpSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + oscWidth, 20, 12, oscHeight);
 		envOsc1AmpSlider.nodeSynthClass = this;
 
-		envOsc1LengthSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + 20 + oscWidth, 20, 12, oscHeight);
+		envOsc1LengthSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + 20 + oscWidth, 20, 12, oscHeight);
 		envOsc1LengthSlider.nodeSynthClass = this;
 
 		envOsc2 = NodeSynthOsc.new;
@@ -571,10 +571,10 @@ NodeSynth {
 		envOsc2.n8 = n35;
 		envOsc2.makeView(oscWidth + 50 + oscWidth + 50 + 10, 30 + oscHeight, oscWidth, oscHeight);
 
-		envOsc2AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + oscWidth, 30 + oscHeight, 12, oscHeight);
+		envOsc2AmpSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + oscWidth, 30 + oscHeight, 12, oscHeight);
 		envOsc2AmpSlider.nodeSynthClass = this;
 
-		envOsc2LengthSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + 20 + oscWidth, 30 + oscHeight, 12, oscHeight);
+		envOsc2LengthSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 50 + oscWidth + 50 + 20 + 20 + oscWidth, 30 + oscHeight, 12, oscHeight);
 		envOsc2LengthSlider.nodeSynthClass = this;
 
 
@@ -591,9 +591,11 @@ NodeSynth {
 		lfo1.n8 = n44;
 		lfo1.makeView(10, 10 + oscHeight + 30 + oscHeight, oscWidth, oscHeight);
 
-		lfo1AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 20, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
+		lfo1AmpSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 20, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
+		lfo1AmpSlider.nodeSynthClass = this;
 
-		lfo1FreqSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 40, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
+		lfo1FreqSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 40, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
+		lfo1FreqSlider.nodeSynthClass = this;
 
 		lfo2 = NodeSynthOsc.new;
 		lfo2.nodeSynthClass = this;
@@ -608,9 +610,9 @@ NodeSynth {
 		lfo2.n8 = n53;
 		lfo2.makeView(10 + oscWidth + 50, 10 + oscHeight + 30 + oscHeight, oscWidth, oscHeight);
 
-		lfo2AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 20, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
+		lfo2AmpSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 50 + oscWidth + 20, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
 
-		lfo2FreqSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 70 + oscWidth + 20, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
+		lfo2FreqSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 70 + oscWidth + 20, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
 
 		lfo3 = NodeSynthOsc.new;
 		lfo3.nodeSynthClass = this;
@@ -625,53 +627,90 @@ NodeSynth {
 		lfo3.n8 = n62;
 		lfo3.makeView(10 + oscWidth + 50 + oscWidth + 50, 10 + oscHeight + 30 + oscHeight, oscWidth, oscHeight);
 
-		lfo3AmpSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 50 + oscWidth + 20 + oscWidth + 50, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
+		lfo3AmpSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 50 + oscWidth + 20 + oscWidth + 50, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
 
-		lfo3FreqSlider = NodeSynthWindow.new.createSlider(window.window, oscWidth + 70 + oscWidth + 20 + oscWidth + 50, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
+		lfo3FreqSlider = NodeSynthWindow.new.nodeSynthClass_(this).createSlider(window.window, oscWidth + 70 + oscWidth + 20 + oscWidth + 50, 10 + oscHeight + 30 + oscHeight, 12, oscHeight);
+
+		lfo2AmpSlider.nodeSynthClass = this;
+		lfo2FreqSlider.nodeSynthClass = this;
+		lfo3AmpSlider.nodeSynthClass = this;
+		lfo3FreqSlider.nodeSynthClass = this;
 
 		lfo1Button = UserView(window.window, Rect(10, oscHeight + 30 + oscHeight + oscHeight + 15, 20, 20));
 		lfo1Button.background_(Color.white);
 		lfo1Button.mouseDownAction_({
 			if(mod == false){
-				lfo1Button.background_(Color(0.05, 0.55, 0.95));
+				lfo1Button.background_(Color(0.05, 0.65, 0.95));
 				lfo2Button.background_(Color.white);
 				lfo3Button.background_(Color.white);
+				envOsc2Button.background_(Color.white);
 				mod = true;
 			}{
+				lfo1Button.background_(Color.white);
 				lfo2Button.background_(Color.white);
+				lfo3Button.background_(Color.white);
+				envOsc2Button.background_(Color.white);
 				mod = false;
 			};
-			this.modMode;
+			this.modMode(0);
 		});
 
 		lfo2Button = UserView(window.window, Rect(10 + 50 + oscWidth, oscHeight + 30 + oscHeight + oscHeight + 15, 20, 20));
 		lfo2Button.background_(Color.white);
 		lfo2Button.mouseDownAction_({
 			if(mod == false){
-				lfo2Button.background_(Color(0.05, 0.55, 0.95));
+				lfo2Button.background_(Color(0.05, 0.65, 0.95));
 				lfo3Button.background_(Color.white);
 				lfo1Button.background_(Color.white);
+				envOsc2Button.background_(Color.white);
 				mod = true;
 			}{
 				lfo2Button.background_(Color.white);
+				lfo3Button.background_(Color.white);
+				lfo1Button.background_(Color.white);
+				envOsc2Button.background_(Color.white);
 				mod = false;
 			};
-			this.modMode;
+			this.modMode(1);
 		});
 
 		lfo3Button = UserView(window.window, Rect(10 + 50 + oscWidth + oscWidth + 50, oscHeight + 30 + oscHeight + oscHeight + 15, 20, 20));
 		lfo3Button.background_(Color.white);
 		lfo3Button.mouseDownAction_({
 			if(mod == false){
-				lfo3Button.background_(Color(0.05, 0.55, 0.95));
+				lfo3Button.background_(Color(0.05, 0.65, 0.95));
 				lfo2Button.background_(Color.white);
 				lfo1Button.background_(Color.white);
+				envOsc2Button.background_(Color.white);
 				mod = true;
 			}{
 				lfo3Button.background_(Color.white);
+				lfo2Button.background_(Color.white);
+				lfo1Button.background_(Color.white);
+				envOsc2Button.background_(Color.white);
 				mod = false;
 			};
-			this.modMode;
+			this.modMode(2);
+		});
+
+		envOsc2Button = UserView(window.window, Rect(oscWidth * 3 + 155, oscHeight * 2 + 10, 20, 20));
+		envOsc2Button.background_(Color.white);
+		envOsc2Button.mouseDownAction_({
+			if(mod == false){
+				envOsc2Button.background_(Color(0.05, 0.65, 0.95));
+				lfo3Button.background_(Color.white);
+				lfo2Button.background_(Color.white);
+				lfo1Button.background_(Color.white);
+				mod = true;
+
+			}{
+				envOsc2Button.background_(Color.white);
+				lfo3Button.background_(Color.white);
+				lfo2Button.background_(Color.white);
+				lfo1Button.background_(Color.white);
+				mod = false;
+			};
+			this.modMode(3);
 		});
 
 		lfo1.nodeSynthClass = this;
@@ -811,6 +850,9 @@ NodeSynth {
 			window.window.refresh;
 			this.makeSynth;
 		});
+
+
+
 
 
 
@@ -1217,10 +1259,16 @@ NodeSynth {
 	makeSynth {
 
 		var spec;
+		if(bI > 40){
+			Buffer.freeAll;
+		};
 		this.makeEnvs;
 		spec = ControlSpec(20, 21000, 'exponential');
 		wave1 = osc1.makeWave;
 		wave2 = osc2.makeWave;
+		lfo1Wave = lfo1.makeWave;
+		lfo2Wave = lfo2.makeWave;
+		lfo3Wave = lfo3.makeWave;
 		osc1AmpSlider.sliderValue = osc1AmpSlider.sliderValue * 0.99 + 0.01;
 		osc2AmpSlider.sliderValue = osc2AmpSlider.sliderValue * 0.99 + 0.01;
 		osc1FreqSlider.sliderValue = osc1FreqSlider.sliderValue * 0.99 + 0.01;
@@ -1232,12 +1280,13 @@ NodeSynth {
 		Ndef(voice1Name, {
 			arg freq = 440, mul = 0.0, gate = 1, done = 2;
 			var sig, env;
+			env = EnvGen.kr(env1, gate, doneAction: done);
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1), freq * osc1FreqSlider.sliderValue) * osc1AmpSlider.sliderValue;
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2), freq * osc2FreqSlider.sliderValue) * osc2AmpSlider.sliderValue, 0.5);
 			sig = Select.ar(fil1.filterType, [RLPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil1.node.x/200), Clip.ar(fil1.node.y/50, 0.1, 1.0))]);
 			sig = Select.ar(fil2.filterType, [RLPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), RHPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)), BPF.ar(sig, spec.map(fil2.node.x/200), Clip.ar(fil2.node.y/50, 0.1, 1.0)) ]);
 
-			env = EnvGen.kr(env1, gate, doneAction: done);
+
 			sig = sig * env;
 			sig = sig * mul;
 
@@ -1349,6 +1398,8 @@ NodeSynth {
 			sig = sig ! 2;
 		});
 
+		bI = bI + 1;
+
 	}
 
 	makeEnvs {
@@ -1356,6 +1407,9 @@ NodeSynth {
 
 			var seg1, seg2, seg3, seg4, seg5, seg6, seg7;
 
+			if(bI > 40){
+				Buffer.freeAll;
+			};
 			seg1 = envOsc1.n0.next.x;
 			seg2 = envOsc1.n0.next.next.x - seg1;
 			seg3 = envOsc1.n0.next.next.next.x - (seg1 + seg2);
@@ -1415,6 +1469,7 @@ NodeSynth {
 
 
 
+		bI = bI + 1;
 
 	}
 
@@ -1427,8 +1482,9 @@ NodeSynth {
 	}
 
 	modMode {
+		arg modulator;
 		var col;
-		col = Color(0.05, 0.55, 0.95);
+		col = Color(0.05, 0.65, 0.95);
 		if(mod == true){
 			osc1AmpSlider.knobColor = col;
 			osc2AmpSlider.knobColor = col;
@@ -1444,6 +1500,20 @@ NodeSynth {
 			lfo1FreqSlider.knobColor = col;
 			lfo2FreqSlider.knobColor = col;
 			lfo3FreqSlider.knobColor = col;
+			osc1AmpSlider.modMode;
+			osc2AmpSlider.modMode;
+			osc1FreqSlider.modMode;
+			osc2FreqSlider.modMode;
+			envOsc1AmpSlider.modMode;
+			envOsc2AmpSlider.modMode;
+			envOsc1LengthSlider.modMode;
+			envOsc2LengthSlider.modMode;
+			lfo1AmpSlider.modMode;
+			lfo2AmpSlider.modMode;
+			lfo3AmpSlider.modMode;
+			lfo1FreqSlider.modMode;
+			lfo2FreqSlider.modMode;
+			lfo3FreqSlider.modMode;
 			fil1.nodeColor = col;
 			fil2.nodeColor = col;
 		}{
@@ -1462,6 +1532,20 @@ NodeSynth {
 			lfo1FreqSlider.knobColor = col;
 			lfo2FreqSlider.knobColor = col;
 			lfo3FreqSlider.knobColor = col;
+			osc1AmpSlider.modMode;
+			osc2AmpSlider.modMode;
+			osc1FreqSlider.modMode;
+			osc2FreqSlider.modMode;
+			envOsc1AmpSlider.modMode;
+			envOsc2AmpSlider.modMode;
+			envOsc1LengthSlider.modMode;
+			envOsc2LengthSlider.modMode;
+			lfo1AmpSlider.modMode;
+			lfo2AmpSlider.modMode;
+			lfo3AmpSlider.modMode;
+			lfo1FreqSlider.modMode;
+			lfo2FreqSlider.modMode;
+			lfo3FreqSlider.modMode;
 			fil1.nodeColor = col;
 			fil2.nodeColor = col;
 
