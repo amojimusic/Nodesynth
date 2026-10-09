@@ -37,7 +37,7 @@ NodeSynthWindow {
 		};
 
 		slider.drawFunc_({
-			Pen.addRect(Rect(sliderValue.neg + 1.0 * height, y, width, height));
+
 			Pen.addOval(sliderKnob);
 			Pen.strokeColor_(knobColor);
 			Pen.stroke;
@@ -197,7 +197,7 @@ NodeSynthWindow {
 			};
 
 			slider.drawFunc_({
-				Pen.addRect(Rect(sliderValue.neg + 1.0 * height, y, width, height));
+
 				Pen.addOval(sliderKnob);
 				Pen.strokeColor_(knobColor);
 				Pen.stroke;
