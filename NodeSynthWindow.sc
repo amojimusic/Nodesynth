@@ -95,7 +95,7 @@ NodeSynthWindow {
 	}
 
 	modMode {
-		arg modulator;
+		arg modulator, color;
 		var width, height, x, y;
 		width = sliderWidth;
 		height = sliderHeight;
@@ -103,7 +103,76 @@ NodeSynthWindow {
 		y = sliderY;
 		modKnobColor = Color.white;
 		if(nodeSynthClass.mod == true){
-			modKnobColor = Color(0.9, 0.8, 0.02);
+			modKnobColor = color;
+
+			slider.drawFunc_({
+				Pen.strokeColor = knobColor;
+				Pen.addOval(sliderKnob);
+				Pen.stroke;
+				if(modulator == 0){
+
+
+					if(l1Value != 0.0){
+						modPosKnob = Rect(0, l1Value.neg * height - (sliderValue * height) + height - (width / 2), width, width);
+						modNegKnob = Rect(0, (sliderValue.neg * height) + height - (width / 2) + (l1Value * height), width, width);
+						Pen.strokeColor = modKnobColor;
+						Pen.fillColor = modKnobColor;
+						Pen.addOval(modPosKnob);
+						Pen.addOval(modNegKnob);
+						Pen.fillStroke;
+						Pen.strokeColor = knobColor;
+						Pen.addOval(sliderKnob);
+						Pen.stroke;
+					};
+				};
+				if(modulator == 1){
+					if(l2Value != 0.0){
+						modPosKnob = Rect(0, l2Value.neg * height - (sliderValue * height) + height - (width / 2), width, width);
+						modNegKnob = Rect(0, (sliderValue.neg * height) + height - (width / 2) + (l2Value * height), width, width);
+						Pen.strokeColor = modKnobColor;
+						Pen.fillColor = modKnobColor;
+						Pen.addOval(modPosKnob);
+						Pen.addOval(modNegKnob);
+						Pen.fillStroke;
+						Pen.strokeColor = knobColor;
+						Pen.addOval(sliderKnob);
+						Pen.stroke;
+
+					};
+				};
+
+				if(modulator == 2){
+					if(l3Value != 0.0){
+						modPosKnob = Rect(0, l3Value.neg * height - (sliderValue * height) + height - (width / 2), width, width);
+						modNegKnob = Rect(0, (sliderValue.neg * height) + height - (width / 2) + (l3Value * height), width, width);
+						Pen.strokeColor = modKnobColor;
+						Pen.fillColor = modKnobColor;
+						Pen.addOval(modPosKnob);
+						Pen.addOval(modNegKnob);
+						Pen.fillStroke;
+						Pen.strokeColor = knobColor;
+						Pen.addOval(sliderKnob);
+						Pen.stroke;
+
+					};
+				};
+				if(modulator == 3){
+					if(e2Value != 0.0){
+						modPosKnob = Rect(0, e2Value.neg * height - (sliderValue * height) + height - (width / 2), width, width);
+						modNegKnob = Rect(0, (sliderValue.neg * height) + height - (width / 2) + (e2Value * height), width, width);
+						Pen.strokeColor = modKnobColor;
+						Pen.fillColor = modKnobColor;
+						Pen.addOval(modPosKnob);
+						Pen.addOval(modNegKnob);
+						Pen.fillStroke;
+						Pen.strokeColor = knobColor;
+						Pen.addOval(sliderKnob);
+						Pen.stroke;
+
+					};
+				};
+			});
+
 			slider.mouseMoveAction_({
 				arg v, xVal, yVal;
 				if(yVal >= height){
@@ -115,26 +184,30 @@ NodeSynthWindow {
 
 
 				if(modulator == 0){
-					l1Value = (yVal/height) - (sliderValue.neg + 1.0);
+					l1Value = ((yVal/height) - (sliderValue.neg + 1.0)).neg;
 				};
 				if(modulator == 1){
-					l2Value = (yVal/height) - (sliderValue.neg + 1.0);
+					l2Value = ((yVal/height) - (sliderValue.neg + 1.0)).neg;
 				};
 				if(modulator == 2){
-					l3Value = (yVal/height) - (sliderValue.neg + 1.0);
+					l3Value = ((yVal/height) - (sliderValue.neg + 1.0)).neg;
 				};
 				if(modulator == 3){
-					e2Value = (yVal/height) - (sliderValue.neg + 1.0);
+					e2Value = ((yVal/height) - (sliderValue.neg + 1.0)).neg;
 				};
 
 
 
-				modPosKnob = Rect(0, yVal - (width / 2), width, width);
-				modNegKnob = Rect(0, (sliderValue.neg + 1.0 * height) - (yVal - (sliderValue.neg + 1.0 * height)) - (width/2), width, width);
+				if(modPosKnob.isNil){
+					modPosKnob = Rect(0, yVal - (width / 2), width, width);
+					modNegKnob = Rect(0, (sliderValue.neg + 1.0 * height) - (yVal - (sliderValue.neg + 1.0 * height)) - (width/2), width, width);
 
+				};
 
 
 				slider.drawFunc_({
+					modPosKnob = Rect(0, yVal - (width / 2), width, width);
+					modNegKnob = Rect(0, (sliderValue.neg + 1.0 * height) - (yVal - (sliderValue.neg + 1.0 * height)) - (width/2), width, width);
 					Pen.strokeColor = modKnobColor;
 					Pen.fillColor = modKnobColor;
 					Pen.addOval(modPosKnob);
@@ -168,10 +241,14 @@ NodeSynthWindow {
 				if(modulator == 3){
 					e2Value = (yVal/height) - (sliderValue.neg + 1.0);
 				};
-				modPosKnob = Rect(0, yVal - (width / 2), width, width);
-				modNegKnob = Rect(0, (sliderValue.neg + 1.0 * height) - (yVal - (sliderValue.neg + 1.0 * height)) - (width/2), width, width);
+				if(modPosKnob.isNil){
+					modPosKnob = Rect(0, yVal - (width / 2), width, width);
+					modNegKnob = Rect(0, (sliderValue.neg + 1.0 * height) - (yVal - (sliderValue.neg + 1.0 * height)) - (width/2), width, width);
+				};
 
 				slider.drawFunc_({
+					modPosKnob = Rect(0, yVal - (width / 2), width, width);
+					modNegKnob = Rect(0, (sliderValue.neg + 1.0 * height) - (yVal - (sliderValue.neg + 1.0 * height)) - (width/2), width, width);
 					Pen.strokeColor = modKnobColor;
 					Pen.fillColor = modKnobColor;
 					Pen.addOval(modPosKnob);

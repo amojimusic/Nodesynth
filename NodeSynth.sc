@@ -640,7 +640,7 @@ NodeSynth {
 		lfo1Button.background_(Color.white);
 		lfo1Button.mouseDownAction_({
 			if(mod == false){
-				lfo1Button.background_(Color(0.05, 0.65, 0.95));
+				lfo1Button.background_(Color(0.05, 0.65, 0.55));
 				lfo2Button.background_(Color.white);
 				lfo3Button.background_(Color.white);
 				envOsc2Button.background_(Color.white);
@@ -652,14 +652,14 @@ NodeSynth {
 				envOsc2Button.background_(Color.white);
 				mod = false;
 			};
-			this.modMode(0);
+			this.modMode(0, Color(0.05, 0.65, 0.55));
 		});
 
 		lfo2Button = UserView(window.window, Rect(10 + 50 + oscWidth, oscHeight + 30 + oscHeight + oscHeight + 15, 20, 20));
 		lfo2Button.background_(Color.white);
 		lfo2Button.mouseDownAction_({
 			if(mod == false){
-				lfo2Button.background_(Color(0.05, 0.65, 0.95));
+				lfo2Button.background_(Color(0.65, 0.05, 0.1));
 				lfo3Button.background_(Color.white);
 				lfo1Button.background_(Color.white);
 				envOsc2Button.background_(Color.white);
@@ -671,14 +671,14 @@ NodeSynth {
 				envOsc2Button.background_(Color.white);
 				mod = false;
 			};
-			this.modMode(1);
+			this.modMode(1, Color(0.65, 0.05, 0.1));
 		});
 
 		lfo3Button = UserView(window.window, Rect(10 + 50 + oscWidth + oscWidth + 50, oscHeight + 30 + oscHeight + oscHeight + 15, 20, 20));
 		lfo3Button.background_(Color.white);
 		lfo3Button.mouseDownAction_({
 			if(mod == false){
-				lfo3Button.background_(Color(0.05, 0.65, 0.95));
+				lfo3Button.background_(Color(0.85, 0.875, 0));
 				lfo2Button.background_(Color.white);
 				lfo1Button.background_(Color.white);
 				envOsc2Button.background_(Color.white);
@@ -690,14 +690,14 @@ NodeSynth {
 				envOsc2Button.background_(Color.white);
 				mod = false;
 			};
-			this.modMode(2);
+			this.modMode(2, Color(0.85, 0.875, 0));
 		});
 
 		envOsc2Button = UserView(window.window, Rect(oscWidth * 3 + 155, oscHeight * 2 + 10, 20, 20));
 		envOsc2Button.background_(Color.white);
 		envOsc2Button.mouseDownAction_({
 			if(mod == false){
-				envOsc2Button.background_(Color(0.05, 0.65, 0.95));
+				envOsc2Button.background_(Color(0.45, 0.05, 0.45));
 				lfo3Button.background_(Color.white);
 				lfo2Button.background_(Color.white);
 				lfo1Button.background_(Color.white);
@@ -710,7 +710,7 @@ NodeSynth {
 				lfo1Button.background_(Color.white);
 				mod = false;
 			};
-			this.modMode(3);
+			this.modMode(3, Color(0.45, 0.05, 0.45));
 		});
 
 		lfo1.nodeSynthClass = this;
@@ -1663,7 +1663,7 @@ NodeSynth {
 	}
 
 	modMode {
-		arg modulator;
+		arg modulator, color;
 		var col;
 		col = Color(0.05, 0.65, 0.95);
 		if(mod == true){
@@ -1681,20 +1681,20 @@ NodeSynth {
 			lfo1FreqSlider.knobColor = col;
 			lfo2FreqSlider.knobColor = col;
 			lfo3FreqSlider.knobColor = col;
-			osc1AmpSlider.modMode(modulator);
-			osc2AmpSlider.modMode(modulator);
-			osc1FreqSlider.modMode(modulator);
-			osc2FreqSlider.modMode(modulator);
-			envOsc1AmpSlider.modMode(modulator);
-			envOsc2AmpSlider.modMode(modulator);
-			envOsc1LengthSlider.modMode(modulator);
-			envOsc2LengthSlider.modMode(modulator);
-			lfo1AmpSlider.modMode(modulator);
-			lfo2AmpSlider.modMode(modulator);
-			lfo3AmpSlider.modMode(modulator);
-			lfo1FreqSlider.modMode(modulator);
-			lfo2FreqSlider.modMode(modulator);
-			lfo3FreqSlider.modMode(modulator);
+			osc1AmpSlider.modMode(modulator, color);
+			osc2AmpSlider.modMode(modulator, color);
+			osc1FreqSlider.modMode(modulator, color);
+			osc2FreqSlider.modMode(modulator, color);
+			envOsc1AmpSlider.modMode(modulator, color);
+			envOsc2AmpSlider.modMode(modulator, color);
+			envOsc1LengthSlider.modMode(modulator, color);
+			envOsc2LengthSlider.modMode(modulator, color);
+			lfo1AmpSlider.modMode(modulator, color);
+			lfo2AmpSlider.modMode(modulator, color);
+			lfo3AmpSlider.modMode(modulator, color);
+			lfo1FreqSlider.modMode(modulator, color);
+			lfo2FreqSlider.modMode(modulator, color);
+			lfo3FreqSlider.modMode(modulator, color);
 			fil1.nodeColor = col;
 			fil2.nodeColor = col;
 		}{
@@ -1713,20 +1713,20 @@ NodeSynth {
 			lfo1FreqSlider.knobColor = col;
 			lfo2FreqSlider.knobColor = col;
 			lfo3FreqSlider.knobColor = col;
-			osc1AmpSlider.modMode(modulator);
-			osc2AmpSlider.modMode(modulator);
-			osc1FreqSlider.modMode(modulator);
-			osc2FreqSlider.modMode(modulator);
-			envOsc1AmpSlider.modMode(modulator);
-			envOsc2AmpSlider.modMode(modulator);
-			envOsc1LengthSlider.modMode(modulator);
-			envOsc2LengthSlider.modMode(modulator);
-			lfo1AmpSlider.modMode(modulator);
-			lfo2AmpSlider.modMode(modulator);
-			lfo3AmpSlider.modMode(modulator);
-			lfo1FreqSlider.modMode(modulator);
-			lfo2FreqSlider.modMode(modulator);
-			lfo3FreqSlider.modMode(modulator);
+			osc1AmpSlider.modMode(modulator, color);
+			osc2AmpSlider.modMode(modulator, color);
+			osc1FreqSlider.modMode(modulator, color);
+			osc2FreqSlider.modMode(modulator, color);
+			envOsc1AmpSlider.modMode(modulator, color);
+			envOsc2AmpSlider.modMode(modulator, color);
+			envOsc1LengthSlider.modMode(modulator, color);
+			envOsc2LengthSlider.modMode(modulator, color);
+			lfo1AmpSlider.modMode(modulator, color);
+			lfo2AmpSlider.modMode(modulator, color);
+			lfo3AmpSlider.modMode(modulator, color);
+			lfo1FreqSlider.modMode(modulator, color);
+			lfo2FreqSlider.modMode(modulator, color);
+			lfo3FreqSlider.modMode(modulator, color);
 			fil1.nodeColor = col;
 			fil2.nodeColor = col;
 
