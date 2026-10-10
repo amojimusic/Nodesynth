@@ -1293,7 +1293,7 @@ NodeSynth {
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1),
 
 				freq * osc1FreqSlider.sliderValue + (lfo1Sig * osc1FreqSlider.l1Value) + (lfo2Sig * osc1FreqSlider.l2Value) + (lfo3Sig * osc1FreqSlider.l3Value) + (modEnv * osc1FreqSlider.e2Value),
-				osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
+				mul: osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
 
 			);
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2),
@@ -1308,8 +1308,6 @@ NodeSynth {
 
 			sig = sig * env;
 			sig = sig * mul;
-
-			sig = sig * ampSpec.map(ampSlider.sliderValue) + (lfo1Sig * ampSlider.l1Value) + (lfo2Sig * ampSlider.l2Value) + (lfo3Sig * ampSlider.l3Value) + (modEnv * ampSlider.e2Value);
 
 			sig = sig ! 2;
 		});
@@ -1334,7 +1332,7 @@ NodeSynth {
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1),
 
 				freq * osc1FreqSlider.sliderValue + (lfo1Sig * osc1FreqSlider.l1Value) + (lfo2Sig * osc1FreqSlider.l2Value) + (lfo3Sig * osc1FreqSlider.l3Value) + (modEnv * osc1FreqSlider.e2Value),
-				osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
+				mul: osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
 
 			);
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2),
@@ -1373,7 +1371,7 @@ NodeSynth {
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1),
 
 				freq * osc1FreqSlider.sliderValue + (lfo1Sig * osc1FreqSlider.l1Value) + (lfo2Sig * osc1FreqSlider.l2Value) + (lfo3Sig * osc1FreqSlider.l3Value) + (modEnv * osc1FreqSlider.e2Value),
-				osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
+				mul: osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
 
 			);
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2),
@@ -1412,7 +1410,7 @@ NodeSynth {
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1),
 
 				freq * osc1FreqSlider.sliderValue + (lfo1Sig * osc1FreqSlider.l1Value) + (lfo2Sig * osc1FreqSlider.l2Value) + (lfo3Sig * osc1FreqSlider.l3Value) + (modEnv * osc1FreqSlider.e2Value),
-				osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
+				mul: osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
 
 			);
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2),
@@ -1451,7 +1449,7 @@ NodeSynth {
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1),
 
 				freq * osc1FreqSlider.sliderValue + (lfo1Sig * osc1FreqSlider.l1Value) + (lfo2Sig * osc1FreqSlider.l2Value) + (lfo3Sig * osc1FreqSlider.l3Value) + (modEnv * osc1FreqSlider.e2Value),
-				osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
+				mul: osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
 
 			);
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2),
@@ -1490,7 +1488,7 @@ NodeSynth {
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1),
 
 				freq * osc1FreqSlider.sliderValue + (lfo1Sig * osc1FreqSlider.l1Value) + (lfo2Sig * osc1FreqSlider.l2Value) + (lfo3Sig * osc1FreqSlider.l3Value) + (modEnv * osc1FreqSlider.e2Value),
-				osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
+				mul: osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
 
 			);
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2),
@@ -1529,7 +1527,7 @@ NodeSynth {
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1),
 
 				freq * osc1FreqSlider.sliderValue + (lfo1Sig * osc1FreqSlider.l1Value) + (lfo2Sig * osc1FreqSlider.l2Value) + (lfo3Sig * osc1FreqSlider.l3Value) + (modEnv * osc1FreqSlider.e2Value),
-				osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
+				mul: osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
 
 			);
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2),
@@ -1568,7 +1566,7 @@ NodeSynth {
 			sig = Osc.ar(Buffer.alloc(Server.local, wave1.size).loadCollection(wave1),
 
 				freq * osc1FreqSlider.sliderValue + (lfo1Sig * osc1FreqSlider.l1Value) + (lfo2Sig * osc1FreqSlider.l2Value) + (lfo3Sig * osc1FreqSlider.l3Value) + (modEnv * osc1FreqSlider.e2Value),
-				osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
+				mul: osc1AmpSlider.sliderValue + (lfo1Sig * osc1AmpSlider.l1Value) + (lfo2Sig * osc1AmpSlider.l2Value) + (lfo3Sig * osc1AmpSlider.l3Value) + (modEnv * osc1AmpSlider.e2Value)
 
 			);
 			sig = sig.blend(Osc.ar(Buffer.alloc(Server.local, wave2.size).loadCollection(wave2),
