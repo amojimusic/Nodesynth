@@ -1679,30 +1679,50 @@ NodeSynth {
 			osc1FreqSlider.knobColor = col;
 			osc2FreqSlider.knobColor = col;
 			envOsc1AmpSlider.knobColor = col;
-			envOsc2AmpSlider.knobColor = col;
+			if(modulator != 3){
+				envOsc2AmpSlider.knobColor = col;
+			};
 			//envOsc1LengthSlider.knobColor = col;
 			//envOsc2LengthSlider.knobColor = col;
-			lfo1AmpSlider.knobColor = col;
-			lfo2AmpSlider.knobColor = col;
-			lfo3AmpSlider.knobColor = col;
-			lfo1FreqSlider.knobColor = col;
-			lfo2FreqSlider.knobColor = col;
-			lfo3FreqSlider.knobColor = col;
+			//lfo1AmpSlider.knobColor = col;
+			if(modulator == 0){
+				lfo2AmpSlider.knobColor = col;
+			};
+			if((modulator == 0) || (modulator == 1)){
+				lfo3AmpSlider.knobColor = col;
+			};
+			//lfo1FreqSlider.knobColor = col;
+			if(modulator == 0){
+				lfo2FreqSlider.knobColor = col;
+			};
+			if((modulator == 0) || (modulator == 1)){
+				lfo3FreqSlider.knobColor = col;
+			};
 			ampSlider.knobColor = col;
 			osc1AmpSlider.modMode(modulator, color);
 			osc2AmpSlider.modMode(modulator, color);
 			osc1FreqSlider.modMode(modulator, color);
 			osc2FreqSlider.modMode(modulator, color);
 			envOsc1AmpSlider.modMode(modulator, color);
-			envOsc2AmpSlider.modMode(modulator, color);
+			if(modulator != 3){
+				envOsc2AmpSlider.modMode(modulator, color);
+			};
 			//envOsc1LengthSlider.modMode(modulator, color);
 			//envOsc2LengthSlider.modMode(modulator, color);
-			lfo1AmpSlider.modMode(modulator, color);
-			lfo2AmpSlider.modMode(modulator, color);
-			lfo3AmpSlider.modMode(modulator, color);
-			lfo1FreqSlider.modMode(modulator, color);
-			lfo2FreqSlider.modMode(modulator, color);
-			lfo3FreqSlider.modMode(modulator, color);
+			//lfo1AmpSlider.modMode(modulator, color);
+			if(modulator == 0){
+				lfo2AmpSlider.modMode(modulator, color);
+			};
+			if((modulator == 0) || (modulator == 1)){
+				lfo3AmpSlider.modMode(modulator, color);
+			};
+			//lfo1FreqSlider.modMode(modulator, color);
+			if(modulator == 0){
+				lfo2FreqSlider.modMode(modulator, color);
+			};
+			if((modulator == 0) || (modulator == 1)){
+				lfo3FreqSlider.modMode(modulator, color);
+			};
 			ampSlider.modMode(modulator, color);
 			//fil1.nodeColor = col;
 			//fil2.nodeColor = col;
