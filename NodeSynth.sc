@@ -1261,6 +1261,7 @@ NodeSynth {
 		var spec, lfoSpec, lfoAmpSpec, ampSpec;
 		if(bI > 40){
 			Buffer.freeAll;
+			bI = 0;
 		};
 		this.makeEnvs;
 		spec = ControlSpec(20, 21000, 'exponential');
@@ -1597,6 +1598,7 @@ NodeSynth {
 
 			if(bI > 40){
 				Buffer.freeAll;
+				bI = 0;
 			};
 			seg1 = envOsc1.n0.next.x;
 			seg2 = envOsc1.n0.next.next.x - seg1;
